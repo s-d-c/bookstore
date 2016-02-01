@@ -12,11 +12,12 @@ var Admin = require('./models/admin');
 mongoose.connect('mongodb://localhost/bookstore');
 
 app.use('/data/books', require('./controllers/books'));
-app.use('/data/users', require('./controllers/users'));
+// app.use('/data/users', require('./controllers/users'));
+
 
 	
 app.get('/*', function(req, res) {
-	res.sendFile(path.join(__dirname, 'public/index.htm.'));
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(3000);

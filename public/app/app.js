@@ -1,4 +1,4 @@
-var app = angular.module('BookstoreApp', ['ngRoute', 'BookCtrls']);
+var app = angular.module('BookstoreApp', ['ngRoute', 'BookCtrls', 'BookServices']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
