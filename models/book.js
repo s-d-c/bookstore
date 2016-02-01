@@ -12,7 +12,8 @@ var BookSchema = new mongoose.Schema({
 	price: Number,
 	isAvailable: Boolean,
 	created_at: Date,
-	updated_at: Date
+	updated_at: Date,
+	genres: Array
 });
 
 BookSchema.pre('save', function(next){
@@ -23,3 +24,5 @@ BookSchema.pre('save', function(next){
   }
   next();
 });
+
+module.exports = mongoose.model('Book', BookSchema);
