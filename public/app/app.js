@@ -1,39 +1,32 @@
-var app = angular.module('BookstoreApp', ['ngRoute', 'BookCtrls']);
+var app = angular.module('BookstoreApp', ['ngRoute', 'BookCtrls', 'BookServices']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
 	$routeProvider
 	.when('/', {
 		templateUrl: 'app/views/home.html',
-		controller:
+		controller: 'HomeCtrl'
 	})
 	.when('/books', {
-		templateUrl: 'app/views/bookResults.html',
-		controller:
+		templateUrl: 'app/views/bookResults.html'
 	})
 	.when('/books/:id', {
-		templateUrl: 'app/views/book.html',
-		controller:
+		templateUrl: 'app/views/book.html'
 	})
 	.when('/browse', {
-		templateUrl: 'app/views/browse.html',
-		controller:
+		templateUrl: 'app/views/browse.html'
 	})
 	.when('/browse/:category', {
-		templateUrl: 'app/views/browseCategory.html',
-		controller:
+		templateUrl: 'app/views/browseCategory.html'
 	})
 	.when('/login', {
-		templateUrl: 'app/views/userLogin.html',
-		controller:
+		templateUrl: 'app/views/userLogin.html'
 	})
 	.when('/cart', {
-		templateUrl: 'app/views/userCart.html',
-		controller: 
+		templateUrl: 'app/views/userCart.html'
 	})
 	.when('/checkout', {
-		templateUrl: 'app/views/userCheckout.html',
-		controller:
+		templateUrl: 'app/views/userCheckout.html'
 	})
 	.otherwise({
 		templateUrl: 'app/views/404.html'
