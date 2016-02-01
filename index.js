@@ -17,7 +17,7 @@ app.use('/data/books', require('./controllers/books'));
 
 	
 app.get('/*', function(req, res) {
-	res.sendFile(path.join(__dirname, 'public/index.htm.'));
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(3000);
