@@ -1,4 +1,7 @@
-<div class="well" ng-repeat="book in books | orderBy: 'created_at' | limitTo: 5">
-	<h1>{{book.title}}</h1>
-</div>
 
+<div class="row align-center">
+	<div class="medium-3 small-3 columns" style="height: 300px; margin: 10px; border: 1px solid steelblue;" ng-repeat="book in books | orderBy: 'created_at' | limitTo:6">
+			<p class="lead">{{book.title}} by {{book.author}}</p>
+			
+	</div>
+</div>
