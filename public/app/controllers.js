@@ -2,8 +2,8 @@ angular.module('BookCtrls', ['BookServices'])
 .controller('HomeCtrl', ['$scope', 'Book', function($scope, Book) {
 
 	angular.element(document).ready(function(){
-        $(document).foundation();
-    });
+		$(document).foundation();
+	});
 
 	$scope.books = [];
 
