@@ -1,18 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="BookstoreApp">
+<html ng-app="BookstoreApp" lang="en">
 <head>
-	<base href='/'>
+
+	<base href="/">
+
 	<meta charset="UTF-8">
 	<title>Bookstore</title>
-	<script src="./app/assets/components/angular/angular.js"></script>
-	<script src="./app/assets/components/angular-route/angular-route.js"></script>
-	<script src="./app/assets/components/angular-resource/angular-resource.js"></script>
+	
+	<link rel="stylesheet" href="app/assets/components/foundation-sites/dist/foundation.min.css">
+	<link rel="stylesheet" href="app/assets/components/foundation-sites/dist/foundation-flex.min.css">
+	
+	
+	<script src="app/assets/components/angular/angular.js"></script>
+	<script src="app/assets/components/angular-route/angular-route.js"></script>
+	<script src="app/assets/components/angular-resource/angular-resource.js"></script>
 	<script src="app/services.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/controllers.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/controllers.js"></script>
 
 </head>
 <body>
-	<ng-view></ng-view>
+	
+	<!-- Navigation Bar Goes here -->
+	<div ng-include="'app/views/navbar.html'"></div>
+	<!-- Content Starts Here -->
+	<div class="container">
+		<div class="row">
+			<div class="medium-8 medium-offset-2">
+				<ng-view></ng-view>
+			</div>
+		</div>
+	</div>
+
+	<script src="app/assets/components/jquery/dist/jquery.min.js"></script>
+	<script src="app/assets/components/foundation-sites/dist/foundation.min.js"></script>
 </body>
 </html>
