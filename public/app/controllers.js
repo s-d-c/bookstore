@@ -15,18 +15,24 @@ angular.module('BookCtrls', ['BookServices'])
 	});
 
 }])
-.controller('BrowseCtrl', ['$scope', 'Book', function($scope, Book) {
-	$scope.categories = { fiction: [], business: [], nature: [], computers: [] };
+.controller('BrowseCtrl', ['$scope','Book', function($scope, Book) {
+	$scope.categories = ["fiction", "nature", "history", "computers"];
 
-	Book.query(function success(data) {
-		$scope.books = data;
-	}, function error(data) {
-		console.log(data)
+}])
+.controller('CategoryCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+	$scope.bookList = [];
+
+	$http({
+		url: "http://localhost:3000/data/browse/" + $routeParams.category,
+		method: 'GET'
+	}).then(function success(res) {
+		if (res.status === 200) {
+			$scope.bookList = res.data;
+		}
+		console.log(res);
+	}, function error(res) {
+		console.log(res);
 	});
-
-	$scope.populateCategories = function(books) {
-		
-	}
 }])
 
 

@@ -14,10 +14,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'app/views/book.html'
 	})
 	.when('/browse', {
-		templateUrl: 'app/views/browse.html'
+		templateUrl: 'app/views/browse.html', 
+		controller: 'BrowseCtrl'
 	})
 	.when('/browse/:category', {
-		templateUrl: 'app/views/browseCategory.html'
+		templateUrl: 'app/views/browseCategory.html', 
+		controller: 'CategoryCtrl'
 	})
 	.when('/login', {
 		templateUrl: 'app/views/userLogin.html'

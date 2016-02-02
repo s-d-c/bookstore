@@ -13,7 +13,7 @@ var Admin = require('./models/admin');
 mongoose.connect('mongodb://localhost/bookstore');
 
 app.use('/data/books', require('./controllers/books'));
-// app.use('/data/users', require('./controllers/users'));
+app.use('/data/browse', require('./controllers/browse'));
 
 	
 app.get('/*', function(req, res) {
