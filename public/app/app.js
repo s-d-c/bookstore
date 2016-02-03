@@ -1,4 +1,4 @@
-var app = angular.module('BookstoreApp', ['ngRoute', 'BookCtrls', 'BookServices']);
+var app = angular.module('BookstoreApp', ['ngRoute', 'BookCtrls', 'BookServices', 'mm.foundation']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
@@ -12,7 +12,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		controller: 'SearchCtrl'
 	})
 	.when('/books/:id', {
-		templateUrl: 'app/views/book.html'
+		templateUrl: 'app/views/book.html',
+		controller: 'ShowBookCtrl'
 	})
 	.when('/browse', {
 		templateUrl: 'app/views/browse.html', 
