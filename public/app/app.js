@@ -8,7 +8,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		controller: 'HomeCtrl'
 	})
 	.when('/books', {
-		templateUrl: 'app/views/bookResults.html'
+		templateUrl: 'app/views/bookResults.html',
+		controller: 'SearchCtrl'
 	})
 	.when('/books/:id', {
 		templateUrl: 'app/views/book.html'

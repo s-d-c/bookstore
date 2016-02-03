@@ -19,8 +19,10 @@
   </div>
   <div class="top-bar-right">
     <ul class="menu">
-      <li><input type="search" class="search-input" placeholder="Search"></li>
-      <li><button type="button" class="search-button">Search</button></li>
+      <form ng-submit="search()">
+        <li><input type="search" class="search-input" placeholder="Search" ng-model="searchTerm"></li>
+        <li><button type="submit" class="search-button">Search</button></li>
+      </form>
     </ul>
   </div>
 </div>
