@@ -1,5 +1,6 @@
+
 <!-- The Stuff I added -->
-<div class="bar large-12 columns">
+<div class="bar large-12 columns"  ng-controller="NavCtrl">
 <div class="nav-bar align-center">
   <ul class="left">
   <li><a href="/" class="hvr-underline-from-left">Hemingway</a></li>
@@ -13,11 +14,11 @@
   <ul>
   
   <li>
-  <form>
+  <form ng-submit="search()">
     <div class="large-12 columns">
       <div class="row collapse postfix-round">
         <div class="small-12 columns input-form">
-        <input type="text" placeholder="Search" class="search-input">
+        <input type="text" placeholder="Search" class="search-input" ng-model="searchTerm">
         <input type="radio" name="search-params" value="Author" id="search-by-author"><label for="Author"><small>By Author</small></label>
         <input type="radio" name="search-params" value="Title" id="search-by-title"><label for="Title"><small>By Title</small></label>
         <input type="radio" name="search-params" value="Genre" id="search-by-genres"><label for="Genre"><small>By Genre</small></label>
@@ -27,8 +28,9 @@
         </div> -->
       </div>
     </div>
+  </form>
   </div>
-  </form></li>
+  </li>
 
 </div>
 </div>

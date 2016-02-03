@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost/bookstore');
 
 app.use('/data/books', require('./controllers/books'));
 app.use('/data/browse', require('./controllers/browse'));
-
+app.use('/data/search', require('./controllers/search'));
 	
 app.get('/*', function(req, res) {
 	res.sendFile(path.join(__dirname, 'public/index.html'));

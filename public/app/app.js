@@ -12,6 +12,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	})
 	.when('/books', {
 		templateUrl: 'app/views/bookResults.html',
+		controller: 'SearchCtrl'
 	})
 	.when('/books/:id', {
 		templateUrl: 'app/views/book.html',
