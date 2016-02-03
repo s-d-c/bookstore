@@ -46,7 +46,6 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		function error(data){
 		})
 }])
-
 .controller('NavCtrl', ['$scope', '$http', '$location', '$route', 'Search', function($scope, $http, $location, $route, Search) {
 	$scope.searchTerm = '';
 	$scope.filter = 'title';
