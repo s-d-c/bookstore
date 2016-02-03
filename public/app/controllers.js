@@ -46,9 +46,5 @@ angular.module('BookCtrls', ['BookServices'])
 		function error(data){
 		})
 }])
-.controller('NavBarCtrl', ['$scope', function($scope) {
-	$scope.radioModel = ' ';
-	console.log($scope.radioModel);
-}])
 
 
