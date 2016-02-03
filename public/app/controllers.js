@@ -1,4 +1,4 @@
-angular.module('BookCtrls', ['BookServices'])
+angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 .controller('HomeCtrl', ['$scope', 'Book', function($scope, Book) {
 
 	angular.element(document).ready(function(){
@@ -45,14 +45,14 @@ angular.module('BookCtrls', ['BookServices'])
 		},
 		function error(data){
 		})
-}]);
+}])
 
-.controller('SearchCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
-	$scope.searchTerm = 'Great Jones Street';
+.controller('NavCtrl', ['$scope', '$http', '$location', '$route', 'Search', function($scope, $http, $location, $route, Search) {
+	$scope.searchTerm = '';
 	$scope.filter = 'title';
-	$scope.bookList = [];
 
 	$scope.search = function() {
+
 		var req = {
 			url: "http://localhost:3000/data/search/",
 			method: 'GET',
@@ -63,16 +63,26 @@ angular.module('BookCtrls', ['BookServices'])
 		}
 		$http(req).then(function success(res) {
 			if (res.status === 200){
-				
+				Search.results = res.data;
+				if ($route.current.$$route.originalPath != '/books'){
 				$location.path('/books');
-				$scope.bookList = res.data;
-				console.log(res.data);
+			} else {
+				$route.reload();
 			}
-			
+	
+				
+			}			
 		}, function error(res) {
 			 console.log(res);
 		});
 	};
+
+}])
+
+.controller('SearchCtrl', ['$scope', '$route', 'Search', function($scope, $route, Search) {
+	console.log($route.current.$$route.originalPath);
+	$scope.results = Search.results;
+	
 }])
 
 
