@@ -1,11 +1,11 @@
 <!-- The Stuff I added -->
 
 <div class="row align-center browse-categories">
-<h1 class="header-one animated bounceInDown">:Category</h1>
+<h1 class="header-one animated bounceInDown" ng-repeat="category in bookList">{{category.genres}}</h1>
 
 <div class="row align-center">
 <div class="large-6 medium-3 small-12 columns" ng-repeat="book in bookList">
-	<h1 id="category-books"><i class="fa fa-book"></i> {{book.title}}</h1>
+	<h1 id="category-books"><i class="fa fa-book"></i> <a ng-href="/books/{{book._id}}"> {{book.title}}</a></h1>
 </div>
 
 </div>
