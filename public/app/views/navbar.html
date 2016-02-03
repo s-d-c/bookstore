@@ -1,5 +1,6 @@
+
 <!-- The Stuff I added -->
-<div class="bar large-12 columns">
+<div class="bar large-12 columns"  ng-controller="NavCtrl">
 <div class="nav-bar align-center">
   <ul class="left">
   <li><a href="/">Hemingway</a></li>
@@ -12,13 +13,18 @@
 
   <ul>
   
-  <li><form>
+  <li><form ng-submit="search()">
     <div class="large-12 columns">
       <div class="row collapse postfix-round">
         <div class="small-12 columns input-form">
-        <input type="text" placeholder="Search" class="search-input">
+        <input type="text" placeholder="Search" class="search-input" ng-model="searchTerm">
 
-        <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed"><small>By Author</small></label><input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed"><small>By Title</small></label><input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed"><small>By Genre</small></label>
+        <!-- <input type="radio" ng-model="filter.name" value="author" btn-radio="author"><label for="author"><small>By Author</small></label>
+        <input type="radio" ng-model="filter.name" value="title" btn-radio="title"><label for="title"><small>By Title</small></label>
+        <input type="radio" ng-model="filter.name" value="genre" btn-radio="genres"><label for="genre"><small>By Genres</small></label>
+ -->
+
+        <!-- <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed"><small>By Title</small></label><input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed"><small>By Genre</small></label> -->
         </div>
 <!--         <div class="small-2 columns">
           <a href="#" class="postfix">Go</a>
