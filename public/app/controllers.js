@@ -34,5 +34,17 @@ angular.module('BookCtrls', ['BookServices'])
 		console.log(res);
 	});
 }])
+.controller('ShowBookCtrl', ['$scope', '$routeParams', 'Book', function($scope, $routeParams, Book){
+	$scope.book = {};
+
+	Book.get(
+		{id: $routeParams.id},
+		function success(data){
+			$scope.book = data;
+			console.log(data);
+		},
+		function error(data){
+		})
+}]);
 
 

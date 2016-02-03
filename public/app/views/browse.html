@@ -1,4 +1,17 @@
-<div class="well" ng-repeat="category in categories">
-	
-	<h1>{{category}}</h1>
+<div class="row content align-center">
+<h1 class="header-one animated bounceInDown">:Category</h1>
+
+</div>
+<div class="row align-center categories">
+	<div class="large-4 medium-3 small-12 columns book" ng-repeat="category in categories| orderBy: 'created_at' | limitTo:5">
+		<a 
+			class="caption" 
+			href="#" 
+			data-title="{{category}}" 
+			data-description="See All {{category}} &rarr;">
+
+			<img src="app/assets/static/img/middlesex.jpg" alt="Book Cover">
+			
+		</a>
+	</div>
 </div>
