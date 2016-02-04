@@ -19,9 +19,9 @@
       <div class="row collapse postfix-round">
         <div class="small-12 columns input-form">
         <input type="text" placeholder="Search" class="search-input" ng-model="searchTerm">
-        <input type="radio" name="search-params" value="Author" id="search-by-author"><label for="Author"><small>By Author</small></label>
-        <input type="radio" name="search-params" value="Title" id="search-by-title"><label for="Title"><small>By Title</small></label>
-        <input type="radio" name="search-params" value="Genre" id="search-by-genres"><label for="Genre"><small>By Genre</small></label>
+        <input type="radio" ng-model="filter" value="author"><label for="Author"><small>By Author</small></label>
+        <input type="radio" ng-model="filter" value="title"><label for="Title" ng-click="setFilter()"><small>By Title</small></label>
+        <input type="radio" ng-model="filter" value="genres"><label for="Genre" ng-click="setFilter()"><small>By Genre</small></label>
         </div>
 <!--         <div class="small-2 columns">
           <a href="#" class="postfix">Go</a>
