@@ -81,7 +81,7 @@ li {
 }
 
 .one-book-view li {
-	font-size: 1.3em;
+	font-size: 1.1em;
 	line-height: 1.8em;
 }
 
@@ -90,6 +90,16 @@ li {
 	border-bottom: 2px solid #0eafa5;
 	font-weight: 900;
 	letter-spacing: 0.2em;
+}
+
+#add-to-cart {
+	background-color: #daf650;
+	font-family: 'PT mono';
+	width: 100%;
+	font-weight: 700;
+	letter-spacing: 0.5em;
+	text-transform: uppercase;
+	color: #0eafa5;
 }
 
 /* Browse Books on Homepage
