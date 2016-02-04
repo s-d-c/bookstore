@@ -30,7 +30,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'app/views/userLogin.html'
 	})
 	.when('/cart', {
-		templateUrl: 'app/views/userCart.html'
+		templateUrl: 'app/views/userCart.html',
+		controller: 'CartCtrl'
 	})
 	.when('/checkout', {
 		templateUrl: 'app/views/userCheckout.html'

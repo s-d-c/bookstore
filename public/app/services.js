@@ -7,3 +7,8 @@ angular.module('BookServices', ['ngResource'])
 					results: []
 				}
 }])
+.factory('Cart', [function() {
+	return {
+		bag: []
+	}
+}]);
