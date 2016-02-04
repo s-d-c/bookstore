@@ -3,6 +3,8 @@ var User = require('../models/user');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
 
+var secret = 'ihopemyponyknowsthewaybackhome';
+
 router.route('/')
 	.post(function(req, res) {
 		User.findOne({email: req.body.email}, function(err, user) {

@@ -13,6 +13,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/bookstore');
 
+app.use('data/users', expressJWT(
+		{
+			secret: secret
+		}
+	).unless(
+		{
+			method: "POST"
+		}
+	)
+);
+
 app.use('/data/books', require('./controllers/books'));
 app.use('/data/browse', require('./controllers/browse'));
 app.use('/data/search', require('./controllers/search'));

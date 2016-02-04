@@ -12,7 +12,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 
 }])
 .controller('BrowseCtrl', ['$scope','Book', function($scope, Book) {
-	$scope.categories = ["fiction", "nature", "history", "computers"];
+	$scope.categories = ["fiction", "nature", "history", "business"];
 
 }])
 .controller('CategoryCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
