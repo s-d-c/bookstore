@@ -67,9 +67,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 				$location.path('/books');
 			} else {
 				$route.reload();
-			}
-	
-				
+				}
 			}			
 		}, function error(res) {
 			 console.log(res);
