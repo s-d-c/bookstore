@@ -12,7 +12,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 
 }])
 .controller('BrowseCtrl', ['$scope','Book', function($scope, Book) {
-	$scope.categories = ["fiction", "nature", "history", "computers"];
+	$scope.categories = ["fiction", "nature", "history", "computers", "economics", "art/design"];
 
 }])
 .controller('CategoryCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
@@ -25,7 +25,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		if (res.status === 200) {
 			$scope.bookList = res.data;
 		}
-		console.log(res);
+		// console.log(res);
 	}, function error(res) {
 		console.log(res);
 	});
@@ -43,7 +43,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		});
 
 	$scope.addToCart = function (item) {
-		console.log(item);
+		// console.log(item);
 		// var book = $scope.book;
 
 			if (item.isAvailable) {
@@ -60,7 +60,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.filter = 'title';
 	$scope.cartItems = Cart.bag;
 	$scope.cartCount = 0;
-	console.log($scope.cartItems);
+	// console.log($scope.cartItems);
 
 	$scope.$watchCollection('cartItems', function(newItems, oldItems) {
   	console.log(newItems.length);
@@ -104,6 +104,6 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 .controller('CartCtrl', ['$scope', '$route', 'Book', 'Cart', function($scope, $route, Book, Cart){
 	console.log(Cart.bag);
 	$scope.userItems = Cart.bag;
-	console.log($scope.userItems);
+	console.log($scope.userItems.title);
 }])
 
