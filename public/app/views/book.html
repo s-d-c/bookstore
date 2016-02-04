@@ -1,25 +1,27 @@
 <div class="row content align-center">
-<h1 class="header-book animated bounceInLeft">{{book.title}}</h1>
+
 </div>
 
 <div class="row align-center one-book">
-	<div class="large-8 medium-3 small-10 columns one-book-view">
-	<ul>
-		<li><span class="accented">${{book.price}}.00</span>
-		<br><li><span class="accented">Author:</span> {{book.author}}</li>
-		<li><span class="accented">Binding:</span> {{book.binding}}</li>
-		<li><span class="accented">Condition:</span> {{book.condition}}</li>
-		<li><span class="accented">Edition:</span> {{book.edition}}</li>
-		<li><span class="accented">Availablity:</span>  {{book.isAvailable}}</li>
-		<br><li><span class="accented">Summary:</span>
-		<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, nihil fugiat quis, laboriosam aperiam reprehenderit, incidunt labore alias fugit soluta commodi! Non facilis nihil iure nobis consequuntur voluptatem modi esse?</li><hr>
-		<li><button ng-click="addToCart(book)" class="hvr-hollow hvr-underline-from-left" id="add-to-cart">Add to Bag</span></button></li>
-	</ul>
-	</div>
-
 
 	<div class="large-4 medium-3 small-10 columns book">
-	<img src="app/assets/static/img/what_is_the_what.jpg" alt="Book Cover">
+	<button ng-click="addToCart(book)" class="hvr-hollow hvr-underline-from-left" id="add-to-cart">Add to Bag</span></button>
+	<img ng-src="{{book.image}}" alt="Book Cover" id="one-book-cover">
 	<!-- <img ng-src="{{book.image}}" id="book-cover"> -->
+	</div>
+
+	<div class="large-8 medium-3 small-10 columns one-book-view one-right">
+	<h1 class="header-book">{{book.title}}</h1>
+	<ul>
+		<br><li>Price: <span class="accented">${{book.price}}.00</span>
+		<br><li><span class="accented">Author</span> {{book.author}}</li>
+		<li><span class="accented">Binding</span> {{book.binding}}</li>
+		<li><span class="accented">Condition</span> {{book.condition}}</li>
+		<li><span class="accented">Edition</span> {{book.edition}}</li>
+		<li><span class="accented">Availablity</span>  {{book.isAvailable}}</li>
+		<br><li><span class="accented">Summary</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, nihil fugiat quis, laboriosam aperiam reprehenderit, incidunt labore alias fugit soluta commodi! Non facilis nihil iure nobis consequuntur voluptatem modi esse? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam et, soluta consequuntur dicta quas pariatur. Totam id voluptas iste mollitia eum minima, placeat ea accusamus voluptatibus, deleniti dolorem tempore quidem.</li><hr>
+
+	</ul>
+	</div>
 	
 </div>

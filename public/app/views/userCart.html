@@ -1,8 +1,25 @@
 <div class="row align-center browse-categories">
 
 <div class="row align-center">
-<div class="large-4 medium-3 small-12 columns" ng-model="userItems" ng-repeat="item in userItems">
-	<h1 id="category-books">{{item.title}}</h1>
+<div class="large-12 medium-12 small-12 columns" >
+	<!-- <h1 id="user-books">{{item.title}}</h1> -->
+	<table>
+  <thead>
+    <tr>
+      <th width="700px">Book Title</th>
+      <th width="150">Quantity</th>
+      <th width="150">Price</th>
+    </tr>
+  </thead>
+  <tbody ng-model="userItems" ng-repeat="item in userItems">
+    <tr>
+      <td>{{item.title}}</td>
+      <td>1</td>
+      <td>${{item.price}}.00</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 </div>
 </div>
+
