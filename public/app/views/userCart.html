@@ -1,8 +1,47 @@
 <div class="row align-center browse-categories">
+<h1 class="header-one animated bounceInDown">Cart Summary</h1>
+</div> 
 
-<div class="row align-center">
-<div class="large-4 medium-3 small-12 columns" ng-model="userItems" ng-repeat="item in userItems">
-	<h1 id="category-books">{{item.title}}</h1>
+<div class="row align-center cart-books">
+<div class="large-9 medium-6 small-12 columns">
+<table>
+  <thead>
+    <tr>
+    	<th width="300"> </th>
+      <th width="500">Your Books</th>
+      <th width="100">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-model="length" ng-repeat="item in userItems">
+    	<td class="user-books"><img ng-src="{{item.image}}"></td>
+      <td class="user-books">{{item.title}}</td>
+      <td class="user-books">{{item.price | currency}}</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+<div class="large-3 medium-6 small-12 columns" id="total-due">
+<table>
+  <thead>
+    <tr>
+      <th>Total Due:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-model="total">
+      <td width="300"><span class="total">{{total | currency}}</span></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
 </div>
 </div>
-</div>
+
+
+

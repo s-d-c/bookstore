@@ -23,6 +23,7 @@
   "dependencies": {
     "foundation": "^5.5.3",
     "angular-foundation": "^0.8.0",
-    "ngCart": "ngcart#^1.0.0"
+    "ngCart": "ngcart#^1.0.0",
+    "angular-payments": "2472bc9befa25678"
   }
 }

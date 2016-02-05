@@ -12,7 +12,8 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 
 }])
 .controller('BrowseCtrl', ['$scope','Book', function($scope, Book) {
-	$scope.categories = ["fiction", "nature", "history", "business"];
+<<<<<<< HEAD
+	$scope.categories = ["fiction", "nature", "history", "computers", "economics", "art/design"];
 
 }])
 .controller('CategoryCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
@@ -25,7 +26,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		if (res.status === 200) {
 			$scope.bookList = res.data;
 		}
-		console.log(res);
+		// console.log(res);
 	}, function error(res) {
 		console.log(res);
 	});
@@ -43,7 +44,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		});
 
 	$scope.addToCart = function (item) {
-		console.log(item);
+		// console.log(item);
 		// var book = $scope.book;
 
 			if (item.isAvailable) {
@@ -54,16 +55,21 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 			}
 	}
 
+	$scope.alerts = [];
+
+	 $scope.addAlert = function() {
+    $scope.alerts.push({msg: "Added! View Your Bag."});
+  };
+
 }])
 .controller('NavCtrl', ['$scope', '$http', '$location', '$route', '$window', 'Search', 'Cart', 'Auth', function($scope, $http, $location, $route, $window, Search, Cart, Auth) {
 	$scope.searchTerm = '';
 	$scope.filter = 'title';
 	$scope.cartItems = Cart.bag;
 	$scope.cartCount = 0;
-	console.log($scope.cartItems);
+	// console.log($scope.cartItems);
 
 	$scope.$watchCollection('cartItems', function(newItems, oldItems) {
-  	console.log(newItems.length);
   	$scope.cartCount = newItems.length;
 	});
 
@@ -81,11 +87,20 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 			if (res.status === 200){
 				Search.results = res.data;
 				console.log(res.data);
+				$scope.searchTerm = '';
 				if ($route.current.$$route.originalPath != '/books'){
 				$location.path('/books');
+				$scope.searchTerm = '';
 			} else {
 				$route.reload();
+<<<<<<< HEAD
+				$scope.searchTerm = '';
+			}
+	
+				
+=======
 				}
+>>>>>>> 8dda5365a2fb8cacea5af473e7c42c43de7524ef
 			}			
 		}, function error(res) {
 			 console.log(res);
@@ -105,9 +120,17 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	
 }])
 .controller('CartCtrl', ['$scope', '$route', 'Book', 'Cart', function($scope, $route, Book, Cart){
-	console.log(Cart.bag);
+	$scope.length = (Cart.bag.length);
+	console.log($scope.length);
+
+
 	$scope.userItems = Cart.bag;
-	console.log($scope.userItems);
+		$scope.total = 0;
+	$scope.userItems = Cart.bag;
+	// console.log($scope.userItems[0].price);
+	$scope.userItems.forEach(function(item){
+		$scope.total += item.price;
+	})
 }])
 .controller('SignupCtrl', ['$scope', '$http', '$location', 'Auth', function($scope, $http, $location, Auth) {
 	$scope.user = {
