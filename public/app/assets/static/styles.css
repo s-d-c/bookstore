@@ -78,8 +78,20 @@ li {
 /* USER CART VIEW 
 ***********************/
 
-#user-books {
-	font-size: 1em;
+.user-books {
+	font-size: 1.2em;
+	line-height: 1.8em;
+}
+
+#total-due {
+	position: fixed;
+	top: 250px;
+	right: 50px;
+}
+
+.total {
+	font-size: 2em;
+	line-height: 2em;
 }
 
 /* See One Book Only
@@ -133,8 +145,13 @@ img#one-book-cover {
 	color: #000000;
 }
 
+.alert-box {
+	background-color: ##daf650;
+}
+
 /* Browse Books on Homepage
 *****************************/
+
 
 .bookInfo {
 	text-transform: uppercase;
@@ -212,6 +229,13 @@ img#one-book-cover {
 	height: 10em;
 	z-index: 10000;
 	top: 0;
+	left: 0;
+	width: 140%;
+	margin: 0;
+	background-color: #FFFFFF;
+}
+
+.bar {
 	width: 140%;
 	background-color: #FFFFFF;
 }
