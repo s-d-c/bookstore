@@ -7,8 +7,8 @@
   <li><a href="/about" class="hvr-underline-from-left">About</a></li>
   <li><a href="/browse" class="hvr-underline-from-left">Browse</a></li>
   <li><a href="/cart" class="hvr-underline-from-left" ng-model="cartItems">Your Bag ({{cartCount}})</a></li>
-  <li><a href="#" class="hvr-underline-from-left">New User</a></li>
-  <li><a href="#" class="hvr-underline-from-left">Returning User</a></li>
+  <li><a href="/login" class="hvr-underline-from-left" ng-hide="isLoggedIn()">Login</a></li>
+  <li><a ng-click="logout()" class="hvr-underline-from-left" ng-show="isLoggedIn()">Logout</a></li>
   </ul>
 
   <ul>

@@ -17,7 +17,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 }])
 .controller('CategoryCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	$scope.bookList = [];
-
+	
 	$http({
 		url: "http://localhost:3000/data/browse/" + $routeParams.category,
 		method: 'GET'
@@ -55,7 +55,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	}
 
 }])
-.controller('NavCtrl', ['$scope', '$http', '$location', '$route', '$window', 'Search', 'Cart', function($scope, $http, $location, $route, $window, Search, Cart) {
+.controller('NavCtrl', ['$scope', '$http', '$location', '$route', '$window', 'Search', 'Cart', 'Auth', function($scope, $http, $location, $route, $window, Search, Cart, Auth) {
 	$scope.searchTerm = '';
 	$scope.filter = 'title';
 	$scope.cartItems = Cart.bag;
@@ -92,6 +92,11 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		});
 	};
 
+	$scope.logout = function() {
+		Auth.removeToken();
+		console.log('My token: ', Auth.getToken());
+	}
+
 }])
 
 .controller('SearchCtrl', ['$scope', '$route', 'Search', function($scope, $route, Search) {
@@ -104,4 +109,38 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.userItems = Cart.bag;
 	console.log($scope.userItems);
 }])
+.controller('SignupCtrl', ['$scope', '$http', '$location', 'Auth', function($scope, $http, $location, Auth) {
+	$scope.user = {
+		email: '',
+		password: ''
+	};
+	$scope.userSignup = function() {
+		$http.post('/data/users', $scope.user).then(function success(res) {
+			$http.post('/data/auth', $scope.user).then(function success(res) {
+				Auth.saveToken(res.data.token);
+				$location.path('/cart');
+				// console.log('My token: ', Auth.getToken());
+			}, function error(res) {
+				console.log(data);
+			});
+		}, function error(res) {
+			console.log(data);
+		});
+	}
+}])
+.controller('LoginCtrl', ['$scope', '$http', '$location', 'Auth', function($scope, $http, $location, Auth) {
+	$scope.user = {
+		email: '',
+		password: ''
+	};
+	$scope.userLogin = function() {
+		$http.post('/data/auth', $scope.user).then(function success(res) {
+			Auth.saveToken(res.data.token);
+			$location.path('/cart');
+		}, function error(res) {
+			console.log(data);
+		});
+	}
+}]);
+
 
