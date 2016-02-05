@@ -11,4 +11,45 @@ angular.module('BookServices', ['ngResource'])
 	return {
 		bag: []
 	}
+}])
+
+.factory('Auth', ['$window', "$rootScope", function($window) {
+	return {
+		saveToken: function(token) {
+			$window.localStorage['bookstore-token'] = token;
+		},
+		getToken: function() {
+			return $window.localStorage['bookstore-token'];
+		},
+		removeToken: function() {
+			$window.localStorage.removeItem('bookstore-token');
+		}, 
+		isLoggedIn: function() {
+			var token = this.getToken();
+			console.log(token ? true : false);
+			return token ? true : false;
+		},
+		currentUser: function() {
+			if (this.isLoggedIn()) {
+				var token = this.getToken();
+				try {
+					var payload = JSON.parse($window.atob(token.split('.')[1]));
+					return payload;
+				} catch(err) {
+					return false;
+				}
+			}
+		}
+	}
+}])
+.factory('AuthInterceptor', ['Auth', function(Auth) {
+	return {
+		request: function(config) {
+			var token = Auth.getToken();
+			if (token) {
+				config.headers.Authorization = 'Bearer ' + token;
+			}
+			return config;
+		}
+	}
 }]);
