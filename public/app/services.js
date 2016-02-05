@@ -1,19 +1,8 @@
 angular.module('BookServices', ['ngResource'])
-.factory('Book', ['$resource', function($resource) {
+.factory('Book', ['$resource', 'Auth', function($resource, Auth) {
 	return $resource('http://localhost:3000/data/books/:id');
 }])
-.factory('Search', [function() {
-	return {
-					results: []
-				}
-}])
-.factory('Cart', [function() {
-	return {
-		bag: []
-	}
-}])
-
-.factory('Auth', ['$window', "$rootScope", function($window) {
+.factory('Auth', ['$window', function($window) {
 	return {
 		saveToken: function(token) {
 			$window.localStorage['bookstore-token'] = token;
@@ -52,4 +41,15 @@ angular.module('BookServices', ['ngResource'])
 			return config;
 		}
 	}
+}])
+.factory('Search', [function() {
+	return {
+					results: []
+				}
+}])
+.factory('Cart', [function() {
+	return {
+		bag: []
+	}
 }]);
+

@@ -151,10 +151,11 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	};
 	$scope.userLogin = function() {
 		$http.post('/data/auth', $scope.user).then(function success(res) {
+			console.log(res);
 			Auth.saveToken(res.data.token);
 			$location.path('/cart');
 		}, function error(res) {
-			console.log(data);
+			console.log(res);
 		});
 	}
 }]);
