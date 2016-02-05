@@ -12,7 +12,6 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 
 }])
 .controller('BrowseCtrl', ['$scope','Book', function($scope, Book) {
-<<<<<<< HEAD
 	$scope.categories = ["fiction", "nature", "history", "computers", "economics", "art/design"];
 
 }])
@@ -93,15 +92,9 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 				$scope.searchTerm = '';
 			} else {
 				$route.reload();
-<<<<<<< HEAD
 				$scope.searchTerm = '';
 			}
-	
-				
-=======
-				}
->>>>>>> 8dda5365a2fb8cacea5af473e7c42c43de7524ef
-			}			
+				}	
 		}, function error(res) {
 			 console.log(res);
 		});
