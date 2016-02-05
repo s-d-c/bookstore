@@ -54,6 +54,12 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 			}
 	}
 
+	$scope.alerts = [];
+
+	 $scope.addAlert = function() {
+    $scope.alerts.push({msg: "Added! View Your Bag."});
+  };
+
 }])
 .controller('NavCtrl', ['$scope', '$http', '$location', '$route', '$window', 'Search', 'Cart', function($scope, $http, $location, $route, $window, Search, Cart) {
 	$scope.searchTerm = '';
@@ -63,7 +69,6 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	// console.log($scope.cartItems);
 
 	$scope.$watchCollection('cartItems', function(newItems, oldItems) {
-  	console.log(newItems.length);
   	$scope.cartCount = newItems.length;
 	});
 
@@ -81,10 +86,13 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 			if (res.status === 200){
 				Search.results = res.data;
 				console.log(res.data);
+				$scope.searchTerm = '';
 				if ($route.current.$$route.originalPath != '/books'){
 				$location.path('/books');
+				$scope.searchTerm = '';
 			} else {
 				$route.reload();
+				$scope.searchTerm = '';
 			}
 	
 				
@@ -102,8 +110,16 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	
 }])
 .controller('CartCtrl', ['$scope', '$route', 'Book', 'Cart', function($scope, $route, Book, Cart){
-	console.log(Cart.bag);
+	$scope.length = (Cart.bag.length);
+	console.log($scope.length);
+
+
 	$scope.userItems = Cart.bag;
-	console.log($scope.userItems.title);
+		$scope.total = 0;
+	$scope.userItems = Cart.bag;
+	// console.log($scope.userItems[0].price);
+	$scope.userItems.forEach(function(item){
+		$scope.total += item.price;
+	})
 }])
 
