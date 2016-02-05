@@ -4,8 +4,9 @@
 <h1 class="header-one animated bounceInDown">New Arrivals</h1>
 
 </div> 
-<div class="row align-center content">
-	<div class="large-4 medium-3 small-10 columns book" ng-repeat="book in books | orderBy: 'created_at' | limitTo:15">
+<div class="row align-center content" >
+<ul class="large-block-grid-3">
+	<li ng-repeat="book in books | orderBy: 'created_at' | limitTo:15" class="book-display">
 		<a 
 			class="caption" 
 			ng-href="/books/{{book._id}}" 
@@ -14,8 +15,9 @@
 
 			<!-- <img src="app/assets/static/img/middlesex.jpg" alt="Book Cover"> -->
 			<img ng-src="{{book.image}}" alt="Book Cover">
-			
 		</a>
+	</li>
+	</ul>
 	</div>
 </div>
 <!-- save this stuff -->

@@ -1,25 +1,47 @@
 <div class="row align-center browse-categories">
+<h1 class="header-one animated bounceInDown">Cart Summary</h1>
+</div> 
 
 <div class="row align-center">
-<div class="large-12 medium-12 small-12 columns" >
-	<!-- <h1 id="user-books">{{item.title}}</h1> -->
-	<table>
+<div class="large-9 medium-6 small-12 columns">
+<table>
   <thead>
     <tr>
-      <th width="700px">Book Title</th>
-      <th width="150">Quantity</th>
-      <th width="150">Price</th>
+    	<th width="400"> </th>
+      <th width="500">Your Books</th>
+      <th width="100">Price</th>
     </tr>
   </thead>
-  <tbody ng-model="userItems" ng-repeat="item in userItems">
-    <tr>
-      <td>{{item.title}}</td>
-      <td>1</td>
-      <td>${{item.price}}.00</td>
+  <tbody>
+    <tr ng-model="length" ng-repeat="item in userItems">
+    	<td class="user-books"><img ng-src="{{item.image}}"></td>
+      <td class="user-books">{{item.title}}</td>
+      <td class="user-books">{{item.price | currency}}</td>
     </tr>
   </tbody>
 </table>
+
+</div>
+
+
+<div class="large-3 medium-6 small-12 columns" id="total-due">
+<table>
+  <thead>
+    <tr>
+      <th>Total Due:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-model="total">
+      <td width="300"><span class="total">{{total | currency}}</span></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
 </div>
 </div>
-</div>
+
+
 

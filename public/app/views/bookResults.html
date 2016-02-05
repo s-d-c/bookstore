@@ -1,8 +1,28 @@
-
-<div class="row align-center browse-categories">
-<div class="large-6 medium-3 small-12 columns" ng-repeat="result in results">
-	
-	<h1>{{result.title}}</h1>
+<div class="row align-center content">
+<h1 class="header-one animated bounceInDown">Search Results</h1>
 
 </div>
+<div class="align-center categories">
+<!-- <div class="large-12 columns" > -->
+	<ul class="large-block-grid-3">
+  <li ng-repeat="result in results">
+  <a 
+			class="caption" 
+			href="#"
+			data-title="{{result.title}}" 
+			data-description="See More About This Book &rarr;">
+
+			<img src="app/assets/static/img/middlesex.jpg" alt="Book Cover">
+			
+		</a>
+		</li>
+</ul>
+		
+<!-- 	</div> -->
+	</div>
 </div>
+
+
+
+
+<!-- ng-href="/browse/{{category}}"  -->
