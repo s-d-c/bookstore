@@ -5,6 +5,7 @@ var router = express.Router();
 router.route('/:category')
 	.get(function(req, res) {
 		list = [];
+		console.log(req.headers.Authorization);
 		Book.find(function(err, books) {
 			if (err) return res.status(500).send(err);
 			for (i = 0; i < books.length; i++){

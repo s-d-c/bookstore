@@ -12,12 +12,13 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 
 }])
 .controller('BrowseCtrl', ['$scope','Book', function($scope, Book) {
+<<<<<<< HEAD
 	$scope.categories = ["fiction", "nature", "history", "computers", "economics", "art/design"];
 
 }])
 .controller('CategoryCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	$scope.bookList = [];
-
+	
 	$http({
 		url: "http://localhost:3000/data/browse/" + $routeParams.category,
 		method: 'GET'
@@ -61,7 +62,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
   };
 
 }])
-.controller('NavCtrl', ['$scope', '$http', '$location', '$route', '$window', 'Search', 'Cart', function($scope, $http, $location, $route, $window, Search, Cart) {
+.controller('NavCtrl', ['$scope', '$http', '$location', '$route', '$window', 'Search', 'Cart', 'Auth', function($scope, $http, $location, $route, $window, Search, Cart, Auth) {
 	$scope.searchTerm = '';
 	$scope.filter = 'title';
 	$scope.cartItems = Cart.bag;
@@ -92,15 +93,24 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 				$scope.searchTerm = '';
 			} else {
 				$route.reload();
+<<<<<<< HEAD
 				$scope.searchTerm = '';
 			}
 	
 				
+=======
+				}
+>>>>>>> 8dda5365a2fb8cacea5af473e7c42c43de7524ef
 			}			
 		}, function error(res) {
 			 console.log(res);
 		});
 	};
+
+	$scope.logout = function() {
+		Auth.removeToken();
+		console.log('My token: ', Auth.getToken());
+	}
 
 }])
 
@@ -122,4 +132,38 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		$scope.total += item.price;
 	})
 }])
+.controller('SignupCtrl', ['$scope', '$http', '$location', 'Auth', function($scope, $http, $location, Auth) {
+	$scope.user = {
+		email: '',
+		password: ''
+	};
+	$scope.userSignup = function() {
+		$http.post('/data/users', $scope.user).then(function success(res) {
+			$http.post('/data/auth', $scope.user).then(function success(res) {
+				Auth.saveToken(res.data.token);
+				$location.path('/cart');
+				// console.log('My token: ', Auth.getToken());
+			}, function error(res) {
+				console.log(data);
+			});
+		}, function error(res) {
+			console.log(data);
+		});
+	}
+}])
+.controller('LoginCtrl', ['$scope', '$http', '$location', 'Auth', function($scope, $http, $location, Auth) {
+	$scope.user = {
+		email: '',
+		password: ''
+	};
+	$scope.userLogin = function() {
+		$http.post('/data/auth', $scope.user).then(function success(res) {
+			Auth.saveToken(res.data.token);
+			$location.path('/cart');
+		}, function error(res) {
+			console.log(data);
+		});
+	}
+}]);
+
 

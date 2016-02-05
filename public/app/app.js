@@ -27,7 +27,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		controller: 'CategoryCtrl'
 	})
 	.when('/login', {
-		templateUrl: 'app/views/userLogin.html'
+		templateUrl: 'app/views/userLogin.html', 
+		controller: 'LoginCtrl'
+	})
+	.when('/signup', {
+		templateUrl: 'app/views/userSignup.html',
+		controller: 'SignupCtrl'
 	})
 	.when('/cart', {
 		templateUrl: 'app/views/userCart.html',
@@ -42,3 +47,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
 	$locationProvider.html5Mode(true);
 }])
+
+.config(['$httpProvider', function($httpProvider) {
+	$httpProvider.interceptors.push('AuthInterceptor');
+}])
+.run(["$rootScope", "Auth", function($rootScope, Auth) {
+	$rootScope.isLoggedIn = function() {
+		return Auth.isLoggedIn.apply(Auth);
+	};
+}])
+
