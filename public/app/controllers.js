@@ -125,7 +125,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		$scope.total += item.price;
 	})
 }])
-.controller('SignupCtrl', ['$scope', '$http', '$location', 'Auth', function($scope, $http, $location, Auth) {
+.controller('SignupCtrl', ['$scope', '$http', '$location',  function($scope, $http, $location, Auth) {
 	$scope.user = {
 		email: '',
 		password: ''

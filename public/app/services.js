@@ -15,7 +15,6 @@ angular.module('BookServices', ['ngResource'])
 		}, 
 		isLoggedIn: function() {
 			var token = this.getToken();
-			console.log(token ? true : false);
 			return token ? true : false;
 		},
 		currentUser: function() {
