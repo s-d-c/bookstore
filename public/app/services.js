@@ -19,8 +19,13 @@ angular.module('BookServices', ['ngResource'])
 				}
 			}
 			return false;
+		},
+
+		emptyBag: function(bag) {
+			bag = [];
+			}
 		}
-	}
+
 }])
 .factory('Auth', ['$window', "$rootScope", function($window) {
 	return {

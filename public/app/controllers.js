@@ -125,11 +125,13 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	};
 
 	$scope.logout = function() {
+		$scope.$watchCollection('cartItems', function(newItems, oldItems) {
+  	$scope.cartCount = 0;
+			});
+		Cart.bag = [];
 		Auth.removeToken();
 		$location.path('/');
-		console.log('My token: ', Auth.getToken());
 	};
-
 
 }])
 
@@ -189,6 +191,32 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 			console.log(res);
 		});
 	}
-}]);
+}])
+.controller('CheckoutCtrl', ['$scope', 'Book', 'Cart', function($scope, Book, Cart){
+
+	$scope.length = Cart.bag.length;
+	$scope.orderSummary = Cart.bag;
+	$scope.total = 0;
+
+	$scope.orderSummary.forEach(function(item){
+		$scope.total += item.price;
+		console.log($scope.checkout);
+	})
+
+	$scope.stripeCallback = function (code, result) {
+    $scope.processing = false;
+			$scope.hideAlerts();
+			if (result.error) {
+				$scope.stripeError = result.error.message;
+			} else {
+				$scope.stripeToken = result.id;
+			}
+	};
+
+	$scope.hideAlerts = function () {
+				$scope.stripeError = null;
+				$scope.stripeToken = null;
+			};
+}])
 
 

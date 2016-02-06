@@ -1,4 +1,4 @@
-var app = angular.module('BookstoreApp', ['ngRoute', 'BookCtrls', 'BookServices', 'mm.foundation']);
+var app = angular.module('BookstoreApp', ['ngRoute', 'BookCtrls', 'BookServices', 'mm.foundation', 'angularPayments']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
@@ -39,7 +39,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		controller: 'CartCtrl'
 	})
 	.when('/checkout', {
-		templateUrl: 'app/views/userCheckout.html'
+		templateUrl: 'app/views/userCheckout.html',
+		controller: 'CheckoutCtrl'
 	})
 	.when('/success', {
 		templateUrl: 'app/views/success.html'
