@@ -1,4 +1,6 @@
-<div class="browse-categories">
+<div class="row" ng-if="!isLoggedIn()">
+
+<div class="browse-categories large-6 columns" >
 	<form ng-submit="userLogin()">
 		<legend>Login</legend>
 
@@ -15,4 +17,13 @@
 		<button type="submit" class="btn btn-primary">Login</button>
 	
 	</form>
+</div>
+
+
+	<div class="browse-categories large-6 columns">
+	<h1>Don't have an account yet?
+	<br>Click the button to Sign Up.</h1>
+	<a href="/signup"><button class="button">Sign Up For an Account</button></a>
+	</div>
+
 </div>

@@ -24,6 +24,8 @@
   </tbody>
 </table>
 
+<p class="text-center" ng-if="!length">Your Bag is Currently Empty. Start <a href="/">Browsing.</a></p>
+
 </div>
 
 
@@ -40,6 +42,11 @@
     </tr>
   </tbody>
 </table>
+
+<a href="/checkout" ng-if="isLoggedIn()"><button class="expand checkout-btn">Checkout</button></a>
+<a href="/login" ng-if="!isLoggedIn()"><button class="expand checkout-btn">Checkout</button></a>
+
+
 
 </div>
 

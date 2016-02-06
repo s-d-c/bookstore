@@ -1,5 +1,5 @@
 angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
-.controller('HomeCtrl', ['$scope', 'Book', function($scope, Book) {
+.controller('HomeCtrl', ['$scope', 'Book', 'Cart', function($scope, Book, Cart) {
 
 	$scope.books = [];
 
@@ -31,7 +31,6 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	});
 }])
 .controller('ShowBookCtrl', ['$scope', '$routeParams', 'Book', 'Cart', function($scope, $routeParams, Book, Cart){
-	
 
 	Book.get(
 		{id: $routeParams.id},
@@ -41,28 +40,49 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		function error(data){
 		});
 	
+
+		 $scope.alerts = [];
+		 $scope.hey = [];
+
 	$scope.cart = Cart.bag;
 	$scope.carts = 0;
+
+	$scope.addAlert = function() {
+    		$scope.alerts.push({type: 'danger', msg: "Added to Cart!"});
+    			$scope.isAlert = function() {
+		return $scope.alerts ? true : false;
+	}
+  			};
+  			$scope.closeAlert = function(index) {
+    		$scope.alerts.splice(index, 1);
+  			};
 
 	$scope.addToCart = function (item) {
 			if (!Cart.isInBag(Cart.bag, $scope.book)) {
 				Cart.bag.push(item);
 				item.isAvailable = false;
-				$scope.carts = 0;
 				$scope.$watchCollection('cart', function(newItems, oldItems) {
-					$scope.carts = newItems.length;
-					console.log($scope.carts);
-				})
+  			$scope.carts = newItems.length;
+
+				});
 			} else {
+				$scope.addAlert = function() {
+    		$scope.alerts.push({type: 'alert', msg: "Already in Cart!"});
+    			$scope.isAlert = function() {
+		return $scope.alerts ? true : false;
+	}
+  			};
+  			$scope.closeAlert = function(index) {
+    		$scope.alerts.splice(index, 1);
+  			};
 				console.log('not available');	
 			}
 	}
 
-	$scope.alerts = [];
-
-	 $scope.addAlert = function() {
-    $scope.alerts.push({msg: "Added! View Your Bag."});
-  };
+	$scope.isActive = false;
+  $scope.activeButton = function() {
+    $scope.isActive = !$scope.isActive;
+  } 
 
 }])
 .controller('NavCtrl', ['$scope', '$http', '$location', '$route', '$window', 'Search', 'Cart', 'Auth', function($scope, $http, $location, $route, $window, Search, Cart, Auth) {
@@ -107,7 +127,17 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.logout = function() {
 		Auth.removeToken();
 		console.log('My token: ', Auth.getToken());
-	}
+	};
+
+	$scope.items = [
+    "The first choice!",
+    "And another choice for you.",
+    "but wait! A third!"
+  ];
+  $scope.linkItems = {
+    "Google": "http://google.com",
+    "AltaVista": "http://altavista.com"
+  };
 
 }])
 
@@ -120,7 +150,6 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.length = (Cart.bag.length);
 	console.log($scope.length);
 
-
 	$scope.userItems = Cart.bag;
 		$scope.total = 0;
 	$scope.userItems = Cart.bag;
@@ -128,12 +157,18 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.userItems.forEach(function(item){
 		$scope.total += item.price;
 	})
+
+	console.log($scope.userItems);
+
 }])
-.controller('SignupCtrl', ['$scope', '$http', '$location', 'Auth', function($scope, $http, $location, Auth) {
+.controller('SignupCtrl', ['$scope', '$http', '$location', 'Auth',  function($scope, $http, $location, Auth) {
 	$scope.user = {
+		name: {},
 		email: '',
-		password: ''
+		password: '',
+		address: {}
 	};
+	console.log($scope.user);
 	$scope.userSignup = function() {
 		$http.post('/data/users', $scope.user).then(function success(res) {
 			$http.post('/data/auth', $scope.user).then(function success(res) {
@@ -155,6 +190,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	};
 	$scope.userLogin = function() {
 		$http.post('/data/auth', $scope.user).then(function success(res) {
+			console.log(res);
 			Auth.saveToken(res.data.token);
 			$location.path('/cart');
 		}, function error(res) {

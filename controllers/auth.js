@@ -9,7 +9,6 @@ router.route('/')
 	.post(function(req, res) {
 		
 		User.findOne({email: req.body.email}, function(err, user) {
-			
 			if (err || !user) return res.status(500).send({message: 'User not found'});
 			user.authenticated(req.body.password, function(err, result) {
 				if (err || !result) return res.send({message: 'User not authenticated'});

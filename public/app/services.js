@@ -1,5 +1,5 @@
 angular.module('BookServices', ['ngResource'])
-.factory('Book', ['$resource', function($resource) {
+.factory('Book', ['$resource', 'Auth', function($resource, Auth) {
 	return $resource('http://localhost:3000/data/books/:id');
 }])
 .factory('Search', [function() {
@@ -22,7 +22,6 @@ angular.module('BookServices', ['ngResource'])
 		}
 	}
 }])
-
 .factory('Auth', ['$window', "$rootScope", function($window) {
 	return {
 		saveToken: function(token) {
@@ -36,7 +35,6 @@ angular.module('BookServices', ['ngResource'])
 		}, 
 		isLoggedIn: function() {
 			var token = this.getToken();
-			
 			return token ? true : false;
 		},
 		currentUser: function() {
@@ -58,10 +56,11 @@ angular.module('BookServices', ['ngResource'])
 			var token = Auth.getToken();
 			if (token) {
 				config.headers.Authorization = 'Bearer ' + token;
-				console.log(config.headers.Authorization);
 			}
 
 			return config;
 		}
 	}
-}]);
+}])
+
+

@@ -14,16 +14,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/bookstore');
 
+// app.use('/data/search', expressJWT({secret: secret}));
+// app.use('/data/books', expressJWT({secret: secret}));
+// app.use('/data/browse', expressJWT({secret: secret}));
 app.use('/data/users', expressJWT({secret: secret})
-	.unless({path: ['/data/users'], method: 'post'}));
+.unless({path: ['/data/users'], method: 'post'}));
 		
-
 app.use(function (err, req, res, next) {
+	console.log('Middleware error:', err);
 	if (err.name === 'UnauthorizedError') {
 		res.status(401).send({message: 'You need an authorization token to view this information'})
 	}
-})
-
+});
 
 app.use('/data/books', require('./controllers/books'));
 app.use('/data/browse', require('./controllers/browse'));
