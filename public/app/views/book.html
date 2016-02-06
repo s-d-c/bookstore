@@ -16,7 +16,7 @@
 	<h1 class="header-book">{{book.title}}</h1>
 	<ul>
 		<br><li>Price: <span class="accented">${{book.price}}.00 </span> <span ng-model="book" ng-if="book.isAvailable">Available</span>
-		<span ng-show="!book.isAvailable" class="accented" style="color: tomato">Sold</span></li>
+		<span ng-show="!book.isAvailable" class="accented" style="color: tomato">In Cart.</span></li>
 		<li><span class="accented">Author</span> {{book.author}}</li>
 		<li><span class="accented">Binding</span> {{book.binding}}</li>
 		<li><span class="accented">Condition</span> {{book.condition}}</li>
