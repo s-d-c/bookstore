@@ -1,29 +1,51 @@
 <div class="row" ng-if="!isLoggedIn()">
 
-<div class="browse-categories large-6 columns" >
-	<form ng-submit="userLogin()">
-		<legend>Login</legend>
+<div class="large-6 columns login-panel">
+	<form ng-submit="userLogin()" name="userForm">
+		<label class="header-book">Login</label>
 
-		<div class="form-group">
-			<label for="email">Email</label>
-			<input type="email" class="form-control" id="email" placeholder="Enter Email" ng-model="user.email">
+		<div class="row">
+			<div class="form-group">
+			<!-- <div class="large-3 columns">
+			<label for="email" class="right inline">Email:</label>
+			</div> -->
+
+			<div class="large-12 columns form-stuff">
+			<label><span style="color: tomato"><span ng-messages="userForm.email.$error"  ng-if="userForm.email.$touched" ng-hide="userForm.email.$valid">
+					<span ng-message="Invalid">Invalid Email. Please Try Again.</span>
+				</span></span></label>
+			<input type="email" name="email" class="search-input" id="email" placeholder="Enter Email" ng-model="user.email">
+			</div>
+			</div>
 		</div>
 
+		<div class="row">
 		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" class="form-control" id="password" placeholder="Enter Password" ng-model="user.password">
+<!-- 			<div class="large-3 columns">
+			<label for="password" class="right inline">Password:</label>
+			</div> -->
+
+			<div class="large-12 columns form-stuff">
+			<label><span style="color: tomato"><span ng-messages="userForm.password.$error" ng-if="userForm.password.$touched" ng-hide="userForm.password.$valid">
+					<span ng-message="Invalid">Required</span>
+				</span>
+				</span></label>
+			<input class="search-input" name="password" type="password" class="form-control" id="password" placeholder="Enter Password" ng-model="user.password" required>
+
+			<button type="submit" class="expand login-button">Login</button>
+			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Login</button>
+		
+		</div>
 	
 	</form>
 </div>
 
-
-	<div class="browse-categories large-6 columns">
-	<h1>Don't have an account yet?
-	<br>Click the button to Sign Up.</h1>
-	<a href="/signup"><button class="button">Sign Up For an Account</button></a>
+	<div class="large-6 columns signup-panel">
+	<label class="header-book">Sign Up</label>
+	<p>If you do not currently have an account, hit the button sign up now.</p>
+	<a href="/signup" class="expand">Sign Up For an Account</a>
 	</div>
 
-</div>
+

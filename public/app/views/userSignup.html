@@ -1,19 +1,17 @@
-<div class="row align-center browse-categories">
-<h1 class="header-one animated bounceInDown">Sign Up</h1>
-</div> 
-
-
-<div class="row signup-form">
-<div class="large-12 columns">
-
-	<form ng-Submit="userSignup()" name="userForm" novalidate>
+<div class="row">
+<div class="large-12 columns signup-form">
+<div class="row form-group">
+				<div class="large-6 columns">
+				<h1 class="header-two">Sign Up</h1>
+				</div></div>
+	<form ng-Submit="userSignup()" name="userForm" novalidate >
 
 			<div class="row form-group">
 				<div class="large-6 columns">
 				<label for="name.first">First Name <span style="color: tomato">* <span ng-messages="userForm.firstName.$error" ng-hide="userForm.firstName.$valid" ng-if="userForm.firstName.$touched">
 					<span ng-message="required">Required.</span>
 				</span></span></label>
-				<input type="text" name="firstName" id="firstName" placeholder="First Name" ng-model="user.name.first" required>
+				<input type="text" class="search-input" name="firstName" id="firstName" placeholder="First Name" ng-model="user.name.first" required>
 				
 				<!-- <span class="error" ng-if="userForm.firstName.$invalid">You name is required.</span> -->
 				</div>
@@ -23,7 +21,7 @@
 				<label for="name.first">Last Name <span style="color: tomato">* <span ng-messages="userForm.lastName.$error" ng-hide="userForm.lastName.$valid" ng-if="userForm.lastName.$touched">
 					<span ng-message="required">Required.</span>
 				</span></span></label> 
-				<input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name" ng-model="user.name.last" required>
+				<input type="text" name="lastName" class="search-input" id="lastName" placeholder="Last Name" ng-model="user.name.last" required>
 				</div>
 			</div>
 
@@ -32,53 +30,67 @@
 				<label for="email">Email <span style="color: tomato">* <span ng-messages="userForm.email.$error"  ng-if="userForm.email.$touched" ng-hide="userForm.email.$valid">
 					<span ng-message="Invalid">Invalid Email.</span>
 				</span></span></label> 
-				<input type="email" name="email" class="form-control" id="email" placeholder="Enter email" ng-model="user.email" required>
+				<input type="email" name="email" class="search-input" id="email" placeholder="Enter email" ng-model="user.email" required>
 				</div>
 
 				<div class="large-6 columns">
 				<label for="phone">Phone</label> 
-				<input type="text" class="form-control" id="phone" placeholder="Phone" ng-model="user.phone">
+				<input type="text" class="search-input" id="phone" placeholder="Phone (Optional)" ng-model="user.phone">
 				</div>
 
 			</div>
 
 			<div class="row">
 			<div class="large-12 columns">
-				<label for="password">Password <span style="color: tomato">*</span></label>
-				<input type="password" class="form-control" id="password" placeholder="Enter Password" ng-model="user.password">
+				<label for="password">Password 
+				<span style="color: tomato">* 
+				<span ng-messages="userForm.password.$error" ng-if="userForm.password.$touched" ng-hide="userForm.password.$valid">
+					<span ng-message="Invalid">Password has to be at least 8 characters long.</span>
+				</span>
+				</span>
+				</label>
+				<input type="password" name="password" class="search-input" id="password" placeholder="Enter Password" ng-model="user.password" ng-minlength="8" required>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="large-6 columns">
-				<label for="address.street">Street <span style="color: tomato">*</span></label> 
-				<input type="text" class="form-control" id="street" placeholder="Street (e.g. 333 12th Ave NE" ng-model="user.address.street">
+				<label for="address.street">Street <span style="color: tomato">* <span ng-messages="userForm.street.$error" ng-hide="userForm.street.$valid" ng-if="userForm.street.$touched">
+					<span ng-message="required">Required.</span>
+				</span></span></label> 
+				<input type="text" name="street" class="search-input" id="street" placeholder="e.g. 333 12th Ave NE" ng-model="user.address.street" required>
 			</div>
 				
 				<div class="large-6 columns">
 					<label for="address.aptNumber">Apt No.</label> 
-					<input type="number" class="form-control" id="aptNumber" placeholder="Apt (Optional)" ng-model="user.address.aptNumber">
+					<input type="number" class="search-input" id="aptNumber" placeholder="Apt (Optional)" ng-model="user.address.aptNumber">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="large-4 columns">
-				<label for="address.city">City <span style="color: tomato">*</span></label> 
-				<input type="text" class="form-control" id="city" placeholder="City" ng-model="user.address.city">
+				<label for="address.city">City <span style="color: tomato">* <span ng-messages="userForm.city.$error" ng-hide="userForm.city.$valid" ng-if="userForm.city.$touched">
+					<span ng-message="required">Required.</span>
+				</span></span></label> 
+				<input type="text" name="city" class="search-input" id="city" placeholder="City" ng-model="user.address.city" required>
 			</div>
 				
 				<div class="large-4 columns">
-					<label for="address.state">State <span style="color: tomato">*</span></label> 
-					<input type="text" class="form-control" id="state" placeholder="State (e.g WA)" ng-model="user.address.state">
+					<label for="address.state">State <span style="color: tomato">* <span ng-messages="userForm.state.$error.maxlength" ng-hide="userForm.state.$valid" ng-if="userForm.state.$touched">
+					<span ng-message="required">Please provide an abbreviation..</span>
+				</span></span></label> 
+					<input type="text" name="state" class="search-input" id="state" placeholder="e.g WA" ng-model="user.address.state" ng-maxlength="2" ng-maxlength="2" required>
 				</div>
 
 				<div class="large-4 columns">
-					<label for="address.zipCode">Zipcode <span style="color: tomato">*</span></label> 
-					<input type="number" class="form-control" id="zipCode" placeholder="Zipcode" ng-model="user.address.zipCode">
+					<label for="address.zipCode">Zipcode <span style="color: tomato">* <span ng-messages="userForm.zipCode.$error.maxlength" ng-messages="userForm.zipCode.$error.required" ng-hide="userForm.zipCode.$valid" ng-if="userForm.zipCode.$touched">
+					<span ng-message="required">Invalid Zipcode.</span>
+				</span></span></label> 
+					<input type="number" name="zipCode" class="search-input" id="zipCode" placeholder="e.g 98105" ng-model="user.address.zipCode" ng-maxlength="5" required>
 				</div>
 			</div>
 
-		<button type="submit" class="button expand" ng-disabled="userForm.$invalid">Signup</button>
+		<button type="submit" class="expand login-button" ng-disabled="userForm.$invalid">Signup</button>
 	</form>
 
 </div>
