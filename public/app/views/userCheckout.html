@@ -1,0 +1,45 @@
+<div class="row">
+
+<div class="large-6 columns checkout-panel">
+	<h1 class="header-two">Order Summary</h1>
+<!-- 	<p >{{item.title}} {{item.price | currency}}</p> -->
+
+<table>
+<thead>
+  <tr ng-if="length">
+    <th width="80%">Book</th>
+    <th width="100">Price</th>
+
+  </tr>
+</thead>
+<tbody>
+  <tr ng-repeat="item in orderSummary">
+    <td class="user-books">{{item.title}}</td>
+    <td class="user-books">{{item.price | currency}}</td>
+  </tr>
+</tbody>
+</table>
+<hr>
+	<p ng-if="!length">Your bag is empty.</p>
+	<p class="lead" ng-model="total" align="right"><strong>Total Due: {{total | currency}}</strong></p>
+</div>
+
+<form stripe-form="stripeCallback" name="checkoutForm">
+<div class="large-6 columns checkout-panel">
+<h1 class="header-two">Checkout</h1>
+	<label for="card">Card Number: <span style="color: tomato" ng-if="checkoutForm.card.$invalid">Error: invalid card number!</span></label>
+ 	<input ng-model="number" placeholder="XXXX-XXXX-XXXX-XXXX" payments-format="card" payments-validate="card" name="card" class="search-input"/>
+
+ 	<label for="expiry">Expiration: <span style="color: tomato" ng-if="checkoutForm.expiry.$invalid">Error: invalid expiration!</span></label>
+  <input ng-model="expiry" placeholder="e.g. 10/19" payments-format="expiry" payments-validate="expiry" name="expiry" class="search-input"/>
+
+  <label for="cvc">CVC: <span style="color: tomato" ng-if="checkoutForm.cvc.$invalid">Error: invalid cvc number!</span></label>
+  <input ng-model="cvc" placeholder="e.g. 000" payments-format="cvc" payments-validate="cvc" name="cvc" class="search-input"/>
+   <button type="submit" class="expand login-button" ng-disabled="checkoutForm.$invalid">Submit</button>
+   	<span class="accented" style="color:#1d9c7f" ng-if="stripeToken" close="hideAlerts()">
+		Stripe successfully acquired! Token: {{stripeToken}}
+	</span>
+   </div>
+</form>
+
+</div>
