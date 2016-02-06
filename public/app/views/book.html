@@ -4,24 +4,25 @@
 
 <div class="row align-center one-book">
 
-	<div class="large-4 medium-3 small-10 columns book">
+	<div class="large-5 medium-3 small-10 columns book">
 	<alert class="success" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-	<button ng-model="carts" ng-if="!carts" ng-hide="isAlert()" ng-click="addToCart(book); addAlert(); activeButton(); addSuccessAlert()" class="hvr-underline-from-left add-to-cart" ng-class=" {'active': isActive} ">Add to Bag</span></button>
+	<button ng-model="carts" ng-if="!carts" ng-hide="isAlert()" ng-click="addToCart(book); addAlert(); addSuccessAlert()" class="hvr-underline-from-left add-to-cart">Add to Bag</span></button>
 	<img ng-src="{{book.image}}" alt="Book Cover" id="one-book-cover">
 
 	<!-- <img ng-src="{{book.image}}" id="book-cover"> -->
 	</div>
 
-	<div class="large-8 medium-3 small-10 columns one-book-view one-right">
+	<div class="large-7 medium-3 small-10 columns one-book-view one-right">
 	<h1 class="header-book">{{book.title}}</h1>
 	<ul>
-		<br><li>Price: <span class="accented">${{book.price}}.00</span>
-		<br><li><span class="accented">Author</span> {{book.author}}</li>
+		<br><li>Price: <span class="accented">${{book.price}}.00 </span> <span ng-model="book" ng-if="book.isAvailable">Available</span>
+		<span ng-show="!book.isAvailable" class="accented" style="color: tomato">Sold</span></li>
+		<li><span class="accented">Author</span> {{book.author}}</li>
 		<li><span class="accented">Binding</span> {{book.binding}}</li>
 		<li><span class="accented">Condition</span> {{book.condition}}</li>
 		<li><span class="accented">Edition</span> {{book.edition}}</li>
-		<li><span class="accented">Availablity</span>  {{book.isAvailable}}</li>
-		<br><li><span class="accented">Summary</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, nihil fugiat quis, laboriosam aperiam reprehenderit, incidunt labore alias fugit soluta commodi! Non facilis nihil iure nobis consequuntur voluptatem modi esse? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam et, soluta consequuntur dicta quas pariatur. Totam id voluptas iste mollitia eum minima, placeat ea accusamus voluptatibus, deleniti dolorem tempore quidem.</li><hr>
+		<!-- <li ng-model="book" ng-if="book.isAvailable"> </li> -->
+		<br><p align="justify"><span class="accented">Summary</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, nihil fugiat quis, laboriosam aperiam reprehenderit, incidunt labore alias fugit soluta commodi! Non facilis nihil iure nobis consequuntur voluptatem modi esse? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam et, soluta consequuntur dicta quas pariatur. Totam id voluptas iste mollitia eum minima, placeat ea accusamus voluptatibus, deleniti dolorem tempore quidem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolore omnis quam facere quia iure iste ratione atque, minus, officia, provident dignissimos aperiam itaque dolor fuga ipsam accusantium quasi nemo.</p><hr>
 
 	</ul>
 	</div>
