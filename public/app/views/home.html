@@ -6,7 +6,7 @@
 </div> 
 <div class="row align-center content" >
 <ul class="large-block-grid-3">
-	<li ng-repeat="book in books | orderBy: 'created_at' | limitTo:12" class="book-display">
+	<li ng-repeat="book in books | orderBy: 'created_at' | limitTo:12" class="book-display animated fadeIn">
 		<a 
 			class="caption" 
 			ng-href="/books/{{book._id}}" 

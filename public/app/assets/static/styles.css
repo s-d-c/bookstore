@@ -130,7 +130,7 @@ li#category-books {
 #total-due {
 	width: 300px;
 	position: fixed;
-	top: 250px;
+	top: 270px;
 	right: 100px;
 }
 
@@ -359,7 +359,7 @@ input.search-input {
 	background-color: transparent;
 	border: 1px solid #AAAAAA;
 	padding: 10px;
-	color: #AAAAAA;
+	color: #000000;
 	font-family: 'PT Mono';
 }
 
@@ -449,6 +449,13 @@ a:hover {
 	width: 49%;
 }
 
+.checkout-panel {
+	border: 1px solid #EEEEEE;
+	padding: 5em;
+	margin-top: 155px;
+	height: 34em;
+}
+
 .signup-form {
 	margin-top: 150px;
 }
@@ -475,12 +482,12 @@ color: black;
 
 button.login-button:disabled{
 	border: 0;
-	background-color: #ffa500;
+	background-color: tomato;
 }
 
 input.ng-invalid {
 	border: 0;
-	border: 1px solid #ffa500;
+	border: 1px solid tomato;
 }
 
 
