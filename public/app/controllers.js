@@ -126,18 +126,10 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 
 	$scope.logout = function() {
 		Auth.removeToken();
+		$location.path('/');
 		console.log('My token: ', Auth.getToken());
 	};
 
-	$scope.items = [
-    "The first choice!",
-    "And another choice for you.",
-    "but wait! A third!"
-  ];
-  $scope.linkItems = {
-    "Google": "http://google.com",
-    "AltaVista": "http://altavista.com"
-  };
 
 }])
 
@@ -173,7 +165,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		$http.post('/data/users', $scope.user).then(function success(res) {
 			$http.post('/data/auth', $scope.user).then(function success(res) {
 				Auth.saveToken(res.data.token);
-				$location.path('/cart');
+				$location.path('/success');
 				// console.log('My token: ', Auth.getToken());
 			}, function error(res) {
 				console.log(res);
@@ -192,7 +184,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		$http.post('/data/auth', $scope.user).then(function success(res) {
 			console.log(res);
 			Auth.saveToken(res.data.token);
-			$location.path('/cart');
+			$location.path('/success');
 		}, function error(res) {
 			console.log(res);
 		});

@@ -1,36 +1,52 @@
 /* Universal Styling for entire page
 ************************************/
 
-body, h1, h2, h3, h4, h4, h5 {
-	font-family: 'PT Mono', sans-serif;
+body {
+	font-family: 'Karla', sans-serif;
 	font-weight: 500;
-	font-size: 16px;
-	background-color: #FFFFFF;
+	font-size: 14px;
 }
+
+#top, #bottom, #left, #right {
+	background-image: url('https://01.img.society6.com/society6/img/Ls-9TRkOo2RRzOr_ocZ2wzlG22k/w_550/artwork/~artwork/s6-0055/a/23184269_12215944/~~/palette-no-twenty-five-prints.jpg');
+	position: fixed;
+	z-index: 10000;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 15px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 15px;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
 
 label {
 	margin-bottom: 0.4em;
 }
-/*
-#firstName, #lastName, #email, 
-#phone, #password, #street, #aptNumber,
-#city, #state, #zipCode {
-	border: 0;
-	border-bottom: 1px solid #0eafa5;
-	background-color: 0;
-}*/
+
+ul {
+	list-style-type: disc;
+	padding-left: 0;
+}
 
 .nav-bar li {
 	list-style-type: none;
 	display: inline-block;
+
 }
 
-li {
+.content ul li {
 	list-style-type: none;
 }
 
 .header-one {
-	font-size: 3em;
+	font-size: 2em;
 	letter-spacing: 0.5em;
 	border-bottom: 6px solid #b8eeee;
 	background-color: #fdff28;
@@ -39,8 +55,8 @@ li {
 	color: #000000;
 	text-transform: uppercase;
 	position: fixed;
-	left: 80px;
-	top: 124px;
+	left: 90px;
+	top: 120px;
 	z-index: 10000;
 }
 
@@ -61,12 +77,28 @@ li {
 	width: 280px;*/
 }
 
+.header-two {
+	font-size: 2em;
+	letter-spacing: 0.4em;
+	background-color: #FFFFFF;
+	opacity: 0.8;
+	font-weight: 700;
+	font-family: "Raleway", sans-serif;
+	color: #000000;
+	text-transform: uppercase;
+/*	position: fixed;
+	right: 180px;
+	top: 170px;
+	z-index: 10000;
+	width: 280px;*/
+}
+
 /*.header-one:hover {
 	border-bottom: 6px solid white;
 }*/
 
 .content {
-	margin-top: 100px;
+	margin-top: 120px;
 	margin-bottom: 30px;
 }
 
@@ -75,12 +107,12 @@ li {
 
 .browse-categories {
 	margin-top: 250px;
+	margin-bottom: 20px;
 }
 
-#category-books {
-	font-size: 2em;
-	font-weight: 700;
-	text-transform: uppercase;
+li#category-books {
+	font-size: 1em;
+	font-weight: normal;
 }
 
 .fa-book {
@@ -142,8 +174,7 @@ li {
 }
 
 .one-book-view li {
-	font-size: 1.1em;
-	line-height: 1.8em;
+	font-size: 1.4em;
 }
 
 img#one-book-cover {
@@ -154,10 +185,13 @@ img#one-book-cover {
 }
 
 .accented {
-	text-transform: uppercase;
-	border-bottom: 2px solid #0eafa5;
+	text-transform: lowercase;
+	font-size: 1.1em;
+	line-height: 1.8em;
+	color: #0eafa5;
+	/*border-bottom: 2px solid #0eafa5;*/
 	font-weight: 900;
-	letter-spacing: 0.2em;
+	letter-spacing: 0.1em;
 }
 
 .add-to-cart {
@@ -172,7 +206,7 @@ img#one-book-cover {
 	border-bottom: 0px solid #0eafa5;
 }
 
-#add-to-cart:hover {
+.add-to-cart:hover {
 	background-color: transparent;
 	color: #000000;
 }
@@ -217,7 +251,8 @@ img#one-book-cover {
 	color: #fff;
 	padding: 20px;
 	width: 100%;
-	transition: opacity 0.3s; 
+	transition: opacity 0.4s; 
+
 }
 
 .caption::before {
@@ -225,7 +260,7 @@ img#one-book-cover {
 	top: 0;
 	height: 60%;
 	background: #0eafa5;
-	font-size: 3em;
+	font-size: 1.5em;
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -245,7 +280,7 @@ img#one-book-cover {
 
 .caption:hover::before,
 .caption:hover::after {
-	opacity: 0.98;
+	opacity: 0.9;
 }
 
 /* Browse Books by Category Goes Here */
@@ -259,13 +294,28 @@ img#one-book-cover {
 .nav-bar {
 	position: fixed;
 	height: 10em;
-	z-index: 10000;
+	z-index: 5000;
 	top: 0;
 	left: 0;
+	right: 0;
 	width: 100%;
-	margin: 0;
 	background-color: #FFFFFF;
 /*	border-bottom: 3px solid #DDDDDD;*/
+}
+
+.nav-bar a:link, a:visited {
+	color: #0eafa5;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 0.5em;
+}
+
+.nav-bar a:hover {
+	color: black;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 0.5em;
+	border: 0;
 }
 
 .small-nav {
@@ -305,6 +355,24 @@ img#one-book-cover {
 	margin-left: 100px;
 }
 
+input.search-input {
+	background-color: transparent;
+	border: 1px solid #AAAAAA;
+	padding: 10px;
+	color: #AAAAAA;
+	font-family: 'PT Mono';
+}
+
+.search {
+	background-color: transparent;
+	border: 1px solid #AAAAAA;
+	padding: 10px;
+	color: #AAAAAA;
+	font-family: 'PT Mono';
+	font-size: 0.3em;
+	text-transform: uppercase;
+}
+
 #submit-button {
 	width: 10em;
 	background-color: transparent;
@@ -322,16 +390,13 @@ img#one-book-cover {
 
 a:link, a:visited {
 	color: #0eafa5;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-size: 0.5em;
+	font-weight: 600;
 }
 
 a:hover {
-	color: black;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-size: 0.5em;
+	color: #000000;
+	background-color: #daf650;
+	font-weight: 600;
 }
 
 .hvr-underline-from-left {
@@ -366,6 +431,81 @@ a:hover {
   right: 0;
 }
 
+/* Sign Up and Log in */
+
+.login-panel {
+	border: 1px solid #EEEEEE;
+	padding: 5em;
+	margin-top: 155px;
+	height: 25em;
+	width: 49%;
+}
+
+.signup-panel {
+	border: 1px solid #EEEEEE;
+	padding: 5em;
+	margin-top: 155px;
+	height: 25em;
+	width: 49%;
+}
+
+.signup-form {
+	margin-top: 150px;
+}
+
+.form-stuff {
+	margin: 4px 0;
+}
+
+button.login-button {
+	border: 1px solid #daf650;
+	background-color: transparent;
+	color: #000000;
+	font-size: 0.3em;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+button.login-button:hover {
+background-color: transparent;
+border: 1px solid black;
+color: black;
+}
+
+button.login-button:disabled{
+	border: 0;
+	background-color: #ffa500;
+}
+
+input.ng-invalid {
+	border: 0;
+	border: 1px solid #ffa500;
+}
+
+
+label {
+	font-weight: bold;
+}
+
+/* footer */
+
+/*.footer p {
+	font-family: 'Gotham';
+	margin: 30px;
+	font-size: 8px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 0.2em;
+	bottom: 0;
+	background-color: #FFFFFF;
+}
+*/
+
+.about-us {
+	margin-top: 180px;
+}
 
 @media only screen and (max-width: 480px) {
 	.search-form {

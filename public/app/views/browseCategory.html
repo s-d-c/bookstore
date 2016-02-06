@@ -5,12 +5,12 @@
 <h1 class="header-one animated bounceInDown" ng-repeat="category in bookList">{{category.genres}}</h1>
 
 <div class="row align-center">
-<div class="large-6 medium-3 small-12 columns" ng-repeat="book in bookList">
-	<h1 id="category-books"><i class="fa fa-book"></i> <a ng-href="/books/{{book._id}}" class="hvr-underline-from-left"> {{book.title}}</a></h1>
-</div>
+<ul class="large-block-grid-2">
+	<li id="category-books" ng-repeat="book in bookList"><i class="fa fa-book"></i> <a ng-href="/books/{{book._id}}" class="hvr-underline-from-left"> {{book.title}}</a></li>
+</ul>
 
-</div>
-</div>
+</div></div>
+
 
 <!-- The Stuff I added -->
 

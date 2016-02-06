@@ -10,14 +10,13 @@
 
   <ul class="right search-form">
   <li><form ng-submit="search()">
-    <input type="text" class="form-control" placeholder="Search" class="search-input" ng-model="searchTerm" class="right">
+    <input type="text" class="form-control search" placeholder="Search" ng-model="searchTerm" >
     <input type="radio" class="form-control" ng-model="filter" value="author"><label for="Author"><small>By Author</small></label>
     <input type="radio" class="form-control" ng-model="filter" value="title"><label for="Title" ng-click="setFilter()"><small>By Title</small></label>
     <input type="radio" class="form-control" ng-model="filter" value="genres"><label for="Genre" ng-click="setFilter()"><small>By Genre</small></label>
   </form></li>
   </ul>
 
-</div>
 
 <div class="small-12 columns small-nav" ng-controller="NavCtrl">
 
@@ -35,3 +34,5 @@
   </ul>
 
 </div>
+
+
