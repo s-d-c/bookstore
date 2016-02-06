@@ -5,13 +5,10 @@
 <div class="row align-center one-book">
 
 	<div class="large-4 medium-3 small-10 columns book">
-<<<<<<< HEAD
-	<button ng-click="addAlert(); showme=true; addToCart(book);" ng-hide="showme" class="hvr-hollow hvr-underline-from-left" id="add-to-cart">Add to Bag</span></button>
-	<a href="/cart"><alert ng-repeat="alert in alerts" ng-show="showme" type="alert.type" class="alert-msg">{{alert.msg}}</alert></a>
+	<button ng-model="carts" ng-click="addToCart(book);" ng-show="!carts" class="hvr-underline-from-left" id="add-to-cart">Add to Bag</span></button>
+	<p ng-hide="!carts">Already added to bag({{carts}})</p>
 	<img ng-src="{{book.image}}" alt="Book Cover" id="one-book-cover">
-=======
-	<img src="{{book.image}}" alt="Book Cover">
->>>>>>> 8dda5365a2fb8cacea5af473e7c42c43de7524ef
+
 	<!-- <img ng-src="{{book.image}}" id="book-cover"> -->
 	</div>
 

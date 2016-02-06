@@ -31,8 +31,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	});
 }])
 .controller('ShowBookCtrl', ['$scope', '$routeParams', 'Book', 'Cart', function($scope, $routeParams, Book, Cart){
-
-	$scope.cart = [];
+	
 
 	Book.get(
 		{id: $routeParams.id},
@@ -41,16 +40,21 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		},
 		function error(data){
 		});
+	
+	$scope.cart = Cart.bag;
+	$scope.carts = 0;
 
 	$scope.addToCart = function (item) {
-		// console.log(item);
-		// var book = $scope.book;
-
-			if (item.isAvailable) {
+			if (!Cart.isInBag(Cart.bag, $scope.book)) {
 				Cart.bag.push(item);
 				item.isAvailable = false;
+				$scope.carts = 0;
+				$scope.$watchCollection('cart', function(newItems, oldItems) {
+					$scope.carts = newItems.length;
+					console.log($scope.carts);
+				})
 			} else {
-				console.log('not available');
+				console.log('not available');	
 			}
 	}
 
@@ -137,10 +141,10 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 				$location.path('/cart');
 				// console.log('My token: ', Auth.getToken());
 			}, function error(res) {
-				console.log(data);
+				console.log(res);
 			});
 		}, function error(res) {
-			console.log(data);
+			console.log(res);
 		});
 	}
 }])
@@ -154,7 +158,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 			Auth.saveToken(res.data.token);
 			$location.path('/cart');
 		}, function error(res) {
-			console.log(data);
+			console.log(res);
 		});
 	}
 }]);

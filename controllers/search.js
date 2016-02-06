@@ -4,11 +4,14 @@ var router = express.Router({mergeParams: true});
 
 router.route('/')
 	.get(function(req, res) {
-			var search = req.query.s;
+			//var search = req.query.s;
+			var regex = new RegExp(req.query.s, 'i');
+			console.log(regex);
 			var filter = req.query.f;
+
 			if (filter === 'author'){
 				Book.find({
-					author : search
+					author: regex
 				},
 				function(err, books) {
 				console.log(books);
@@ -17,7 +20,7 @@ router.route('/')
 				})
 			}	else if (filter === 'title') {
 				Book.find({
-					title : search
+					title : regex
 				},
 				function(err, books) {
 					console.log(books);
@@ -26,7 +29,7 @@ router.route('/')
 				})
 			} else {
 				Book.find({
-					genres : search
+					genres : regex
 				}, 
 				function(err, books) {
 					console.log(books);
