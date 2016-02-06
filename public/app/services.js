@@ -9,7 +9,17 @@ angular.module('BookServices', ['ngResource'])
 }])
 .factory('Cart', [function() {
 	return {
-		bag: []
+		bag: [],
+
+		isInBag: function(bag, book) {
+			for (i = 0; i < bag.length; i++) {
+				if (bag[i]._id === book._id) {
+
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }])
 
@@ -26,7 +36,7 @@ angular.module('BookServices', ['ngResource'])
 		}, 
 		isLoggedIn: function() {
 			var token = this.getToken();
-			console.log(token ? true : false);
+			
 			return token ? true : false;
 		},
 		currentUser: function() {
@@ -48,7 +58,9 @@ angular.module('BookServices', ['ngResource'])
 			var token = Auth.getToken();
 			if (token) {
 				config.headers.Authorization = 'Bearer ' + token;
+				console.log(config.headers.Authorization);
 			}
+
 			return config;
 		}
 	}
