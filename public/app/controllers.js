@@ -39,28 +39,50 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		},
 		function error(data){
 		});
+	
+
+		 $scope.alerts = [];
+		 $scope.hey = [];
 
 	$scope.cart = Cart.bag;
-  $scope.carts = 0;
-	// console.log($scope.cart);
+	$scope.carts = 0;
 
+	$scope.addAlert = function() {
+    		$scope.alerts.push({type: 'danger', msg: "Added to Cart!"});
+    			$scope.isAlert = function() {
+		return $scope.alerts ? true : false;
+	}
+  			};
+  			$scope.closeAlert = function(index) {
+    		$scope.alerts.splice(index, 1);
+  			};
 
 	$scope.addToCart = function (item) {
-		// console.log(item);
-		// var book = $scope.book;
-
-			if (item.isAvailable) {
+			if (!Cart.isInBag(Cart.bag, $scope.book)) {
 				Cart.bag.push(item);
 				item.isAvailable = false;
-				$scope.carts = 0;
 				$scope.$watchCollection('cart', function(newItems, oldItems) {
   			$scope.carts = newItems.length;
-  			console.log($scope.carts);
+
 				});
 			} else {
-				console.log('not available');
+				$scope.addAlert = function() {
+    		$scope.alerts.push({type: 'alert', msg: "Already in Cart!"});
+    			$scope.isAlert = function() {
+		return $scope.alerts ? true : false;
+	}
+  			};
+  			$scope.closeAlert = function(index) {
+    		$scope.alerts.splice(index, 1);
+  			};
+				console.log('not available');	
 			}
 	}
+
+	$scope.isActive = false;
+  $scope.activeButton = function() {
+    $scope.isActive = !$scope.isActive;
+  } 
 
 }])
 .controller('NavCtrl', ['$scope', '$http', '$location', '$route', '$window', 'Search', 'Cart', 'Auth', function($scope, $http, $location, $route, $window, Search, Cart, Auth) {
@@ -154,10 +176,10 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 				$location.path('/cart');
 				// console.log('My token: ', Auth.getToken());
 			}, function error(res) {
-				console.log(data);
+				console.log(res);
 			});
 		}, function error(res) {
-			console.log(data);
+			console.log(res);
 		});
 	}
 }])

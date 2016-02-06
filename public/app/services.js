@@ -2,7 +2,27 @@ angular.module('BookServices', ['ngResource'])
 .factory('Book', ['$resource', 'Auth', function($resource, Auth) {
 	return $resource('http://localhost:3000/data/books/:id');
 }])
-.factory('Auth', ['$window', function($window) {
+.factory('Search', [function() {
+	return {
+					results: []
+				}
+}])
+.factory('Cart', [function() {
+	return {
+		bag: [],
+
+		isInBag: function(bag, book) {
+			for (i = 0; i < bag.length; i++) {
+				if (bag[i]._id === book._id) {
+
+					return true;
+				}
+			}
+			return false;
+		}
+	}
+}])
+.factory('Auth', ['$window', "$rootScope", function($window) {
 	return {
 		saveToken: function(token) {
 			$window.localStorage['bookstore-token'] = token;
@@ -37,18 +57,10 @@ angular.module('BookServices', ['ngResource'])
 			if (token) {
 				config.headers.Authorization = 'Bearer ' + token;
 			}
+
 			return config;
 		}
 	}
 }])
-.factory('Search', [function() {
-	return {
-					results: []
-				}
-}])
-.factory('Cart', [function() {
-	return {
-		bag: []
-	}
-}]);
+
 

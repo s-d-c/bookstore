@@ -160,7 +160,7 @@ img#one-book-cover {
 	letter-spacing: 0.2em;
 }
 
-#add-to-cart {
+.add-to-cart {
 	background-color: #daf650;
 	font-family: 'PT mono';
 	width: 100%;
@@ -389,7 +389,5 @@ a:hover {
 	}
 
 }
-
-
 
 
