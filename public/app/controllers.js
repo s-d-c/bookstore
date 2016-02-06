@@ -143,16 +143,23 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 .controller('CartCtrl', ['$scope', '$route', 'Book', 'Cart', function($scope, $route, Book, Cart){
 	$scope.length = (Cart.bag.length);
 	console.log($scope.length);
+	// $scope.cartCount = 0;
 
 	$scope.userItems = Cart.bag;
 		$scope.total = 0;
-	$scope.userItems = Cart.bag;
 	// console.log($scope.userItems[0].price);
 	$scope.userItems.forEach(function(item){
 		$scope.total += item.price;
-	})
+	});
 
-	console.log($scope.userItems);
+	$scope.removeItem = function(item) {
+		for (i=0; i < Cart.bag.length; i++) {
+			if (Cart.bag[i] === item) {
+				Cart.bag.splice(i, 1);
+				$scope.total -= item.price;
+			}
+		}
+	}
 
 }])
 .controller('SignupCtrl', ['$scope', '$http', '$location', 'Auth',  function($scope, $http, $location, Auth) {
