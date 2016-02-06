@@ -1,3 +1,4 @@
-node_modules
-public/app/assets/components
 .sass-cache
+public/app/assets/components
+node_modules
+npm-debug.log
