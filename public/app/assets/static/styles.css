@@ -8,6 +8,18 @@ body, h1, h2, h3, h4, h4, h5 {
 	background-color: #FFFFFF;
 }
 
+label {
+	margin-bottom: 0.4em;
+}
+/*
+#firstName, #lastName, #email, 
+#phone, #password, #street, #aptNumber,
+#city, #state, #zipCode {
+	border: 0;
+	border-bottom: 1px solid #0eafa5;
+	background-color: 0;
+}*/
+
 .nav-bar li {
 	list-style-type: none;
 	display: inline-block;
@@ -97,6 +109,21 @@ li {
 
 .cart-books {
 	margin-top: 0;
+}
+
+.checkout-btn {
+	background-color: transparent;
+	border: 1px solid #DDDDDD;
+	font-family: 'Raleway', sans-serif;
+	color: #666666;
+	font-weight: 500;
+}
+
+.checkout-btn:hover {
+	background-color: transparent;
+	border: 1px solid #0eafa5;
+	font-family: 'Raleway', sans-serif;
+	color: #0eafa5;
 }
 
 /* See One Book Only
@@ -235,7 +262,19 @@ img#one-book-cover {
 	z-index: 10000;
 	top: 0;
 	left: 0;
-	width: 140%;
+	width: 100%;
+	margin: 0;
+	background-color: #FFFFFF;
+/*	border-bottom: 3px solid #DDDDDD;*/
+}
+
+.small-nav {
+	height: 20px;
+	position: fixed;
+	z-index: 10000;
+	top: 0;
+	left: 0;
+	width: 100%;
 	margin: 0;
 	background-color: #FFFFFF;
 }
@@ -257,8 +296,13 @@ img#one-book-cover {
 	font-weight: 600;
 }
 
-.input-form {
-	width: 340px;
+.search-form {
+/*	width: 400px;*/
+	margin-right: 110px;
+}
+
+.nav-left {
+	margin-left: 100px;
 }
 
 #submit-button {
@@ -323,7 +367,28 @@ a:hover {
 }
 
 
+@media only screen and (max-width: 480px) {
+	.search-form {
+		display: none;
+	}
 
+	.nav-left, .nav-bar {
+		display: none;
+	}
+
+	.header-one {
+		display: none;
+	}
+
+}
+
+@media only screen and (min-width: 500px) {
+
+	.small-nav {
+		display: none;
+	}
+
+}
 
 
 

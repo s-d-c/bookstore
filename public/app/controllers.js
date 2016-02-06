@@ -1,5 +1,5 @@
 angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
-.controller('HomeCtrl', ['$scope', 'Book', function($scope, Book) {
+.controller('HomeCtrl', ['$scope', 'Book', 'Cart', function($scope, Book, Cart) {
 
 	$scope.books = [];
 
@@ -32,8 +32,6 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 }])
 .controller('ShowBookCtrl', ['$scope', '$routeParams', 'Book', 'Cart', function($scope, $routeParams, Book, Cart){
 
-	$scope.cart = [];
-
 	Book.get(
 		{id: $routeParams.id},
 		function success(data){
@@ -42,6 +40,11 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		function error(data){
 		});
 
+	$scope.cart = Cart.bag;
+  $scope.carts = 0;
+	// console.log($scope.cart);
+
+
 	$scope.addToCart = function (item) {
 		// console.log(item);
 		// var book = $scope.book;
@@ -49,16 +52,15 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 			if (item.isAvailable) {
 				Cart.bag.push(item);
 				item.isAvailable = false;
+				$scope.carts = 0;
+				$scope.$watchCollection('cart', function(newItems, oldItems) {
+  			$scope.carts = newItems.length;
+  			console.log($scope.carts);
+				});
 			} else {
 				console.log('not available');
 			}
 	}
-
-	$scope.alerts = [];
-
-	 $scope.addAlert = function() {
-    $scope.alerts.push({msg: "Added! View Your Bag."});
-  };
 
 }])
 .controller('NavCtrl', ['$scope', '$http', '$location', '$route', '$window', 'Search', 'Cart', 'Auth', function($scope, $http, $location, $route, $window, Search, Cart, Auth) {
@@ -103,7 +105,17 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.logout = function() {
 		Auth.removeToken();
 		console.log('My token: ', Auth.getToken());
-	}
+	};
+
+	$scope.items = [
+    "The first choice!",
+    "And another choice for you.",
+    "but wait! A third!"
+  ];
+  $scope.linkItems = {
+    "Google": "http://google.com",
+    "AltaVista": "http://altavista.com"
+  };
 
 }])
 
@@ -116,7 +128,6 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.length = (Cart.bag.length);
 	console.log($scope.length);
 
-
 	$scope.userItems = Cart.bag;
 		$scope.total = 0;
 	$scope.userItems = Cart.bag;
@@ -124,12 +135,18 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.userItems.forEach(function(item){
 		$scope.total += item.price;
 	})
+
+	console.log($scope.userItems);
+
 }])
-.controller('SignupCtrl', ['$scope', '$http', '$location',  function($scope, $http, $location, Auth) {
+.controller('SignupCtrl', ['$scope', '$http', '$location', 'Auth',  function($scope, $http, $location, Auth) {
 	$scope.user = {
+		name: {},
 		email: '',
-		password: ''
+		password: '',
+		address: {}
 	};
+	console.log($scope.user);
 	$scope.userSignup = function() {
 		$http.post('/data/users', $scope.user).then(function success(res) {
 			$http.post('/data/auth', $scope.user).then(function success(res) {
