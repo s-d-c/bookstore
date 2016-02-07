@@ -2,6 +2,7 @@
 
 <div class="large-6 columns checkout-panel">
 	<h1 class="header-two">Order Summary</h1>
+	<hr>
 <!-- 	<p >{{item.title}} {{item.price | currency}}</p> -->
 
 <table>
@@ -19,30 +20,42 @@
   </tr>
 </tbody>
 </table>
-<hr>
 	<p ng-if="!length">Your bag is empty.</p>
-	<span class="lead right" ng-model="length" ng-if="length" >{{total | currency}}</span>
-	<br><span class="lead" ng-model="length" ng-if="length" align="right">Shipping: {{orderSummary.length * 1.50 | currency}}</span>
-	<br><span class="lead" ng-if="length" align="right">Taxes: {{total * 0.08 | currency}}</span>
-	<p class="lead" ng-model="total" align="right"><strong>Total Due: {{total * 1.08 + orderSummary.length * 1.50 | currency}}</strong></p>
+	
+<!-- 	<p class="lead right" ng-model="length" ng-if="length" align="right">{{total | currency}}
+	<br><span class="lead right" ng-model="length" ng-if="length" align="right">Shipping: {{orderSummary.length * 1.50 | currency}}</span>
+	<br><span class="lead right" ng-if="length" align="right">Taxes: {{total * 0.08 | currency}}</span></p> -->
+
+	<p class="right" ng-model="total" align="right">
+		<span ng-model="length" ng-if="length" align="right">Total: {{total | currency}} </span>
+		<br><span ng-if="length">Taxes: {{total * 0.08 | currency}}</span>
+		<br><span ng-if="length" ng-model="length" align="right">Shipping: {{orderSummary.length * 1.50 | currency}}</span>
+		<hr></p>
+		<p class="lead right" align="right" ng-if="length"><strong>Total Due: {{total * 1.08 + orderSummary.length * 1.50 | currency}}</strong></p>
+	</p>
 </div>
 
 <form stripe-form="stripeCallback" name="checkoutForm">
-<div class="large-6 columns checkout-panel">
-<h1 class="header-two">Checkout</h1>
-	<label for="card">Card Number: <span style="color: tomato" ng-if="checkoutForm.card.$invalid">Error: invalid card number!</span></label>
- 	<input ng-model="number" placeholder="XXXX-XXXX-XXXX-XXXX" payments-format="card" payments-validate="card" name="card" class="search-input"/>
+	<div class="large-6 columns checkout-panel">
+		<h1 class="header-two">Checkout</h1>
+		<hr>
 
- 	<label for="expiry">Expiration: <span style="color: tomato" ng-if="checkoutForm.expiry.$invalid">Error: invalid expiration!</span></label>
-  <input ng-model="expiry" placeholder="e.g. 10/19" payments-format="expiry" payments-validate="expiry" name="expiry" class="search-input"/>
+		<label for="name">Cardholder Name: <span style="color: tomato" ng-if="checkoutForm.name.$invalid">Required.</span></label>
+	 	<input ng-model="name" name="name" payments-format="name" class="search-input" required/>
 
-  <label for="cvc">CVC: <span style="color: tomato" ng-if="checkoutForm.cvc.$invalid">Error: invalid cvc number!</span></label>
-  <input ng-model="cvc" placeholder="e.g. 000" payments-format="cvc" payments-validate="cvc" name="cvc" class="search-input"/>
-   <button type="submit" class="expand login-button" ng-disabled="checkoutForm.$invalid">Submit</button>
-   	<span class="accented" style="color:#1d9c7f" ng-if="stripeToken" close="hideAlerts()">
-		<!-- Stripe successfully acquired! Token: {{stripeToken}} -->
-	</span>
-   </div>
+		<label for="card">Card Number: <span style="color: tomato" ng-if="checkoutForm.card.$invalid">Invalid Card Number</span></label>
+	 	<input ng-model="number" placeholder="XXXX-XXXX-XXXX-XXXX" payments-format="card" payments-validate="card" name="card" class="search-input"/>
+
+	 	<label for="expiry">Expiration: <span style="color: tomato" ng-if="checkoutForm.expiry.$invalid">Invalid Expiration</span></label>
+	  <input ng-model="expiry" placeholder="e.g. 10/19" payments-format="expiry" payments-validate="expiry" name="expiry" class="search-input"/>
+
+	  <label for="cvc">CVC: <span style="color: tomato" ng-if="checkoutForm.cvc.$invalid">Invalid CVC Number</span></label>
+	  <input ng-model="cvc" placeholder="e.g. 000" payments-format="cvc" payments-validate="cvc" name="cvc" class="search-input"/>
+	  <button class="expand login-button" ng-disabled="checkoutForm.$invalid" ng-click="checkoutSubmit()">Submit</button>
+	  <span class="accented" style="color:#1d9c7f" ng-if="stripeToken" close="hideAlerts()">
+			<!-- Stripe successfully acquired! Token: {{stripeToken}} -->
+		</span>
+	   </div>
 </form>
 
 </div>
