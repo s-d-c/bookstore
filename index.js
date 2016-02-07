@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/bookstore');
+mongoose.connect(process.env.PROD_MONGODB || 'mongodb://localhost/bookstore');
 
 // app.use('/data/search', expressJWT({secret: secret}));
 // app.use('/data/books', expressJWT({secret: secret}));
