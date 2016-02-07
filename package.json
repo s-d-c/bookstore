@@ -4,7 +4,8 @@
   "description": "e-commerce site for used bookstore",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "bower install"
     },
   "repository": {
     "type": "git",
