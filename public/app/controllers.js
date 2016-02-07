@@ -22,7 +22,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 }])
 .controller('CategoryCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	$scope.bookList = [];
-	
+	$scope.category = $routeParams.category;
 	$http({
 		url: "http://localhost:3000/data/browse/" + $routeParams.category,
 		method: 'GET'
