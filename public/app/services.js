@@ -1,6 +1,6 @@
 angular.module('BookServices', ['ngResource'])
 .factory('Book', ['$resource', 'Auth', function($resource, Auth) {
-	return $resource('https://walldeskfloor.herokuapp.com/data/books/:id');
+	return $resource('http://localhost:3000/data/books/:id');
 }])
 .factory('Search', [function() {
 	return {
