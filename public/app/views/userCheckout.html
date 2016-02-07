@@ -21,7 +21,10 @@
 </table>
 <hr>
 	<p ng-if="!length">Your bag is empty.</p>
-	<p class="lead" ng-model="total" align="right"><strong>Total Due: {{total | currency}}</strong></p>
+	<span class="lead right" ng-model="length" ng-if="length" >{{total | currency}}</span>
+	<br><span class="lead" ng-model="length" ng-if="length" align="right">Shipping: {{orderSummary.length * 1.50 | currency}}</span>
+	<br><span class="lead" ng-if="length" align="right">Taxes: {{total * 0.08 | currency}}</span>
+	<p class="lead" ng-model="total" align="right"><strong>Total Due: {{total * 1.08 + orderSummary.length * 1.50 | currency}}</strong></p>
 </div>
 
 <form stripe-form="stripeCallback" name="checkoutForm">
@@ -37,7 +40,7 @@
   <input ng-model="cvc" placeholder="e.g. 000" payments-format="cvc" payments-validate="cvc" name="cvc" class="search-input"/>
    <button type="submit" class="expand login-button" ng-disabled="checkoutForm.$invalid">Submit</button>
    	<span class="accented" style="color:#1d9c7f" ng-if="stripeToken" close="hideAlerts()">
-		Stripe successfully acquired! Token: {{stripeToken}}
+		<!-- Stripe successfully acquired! Token: {{stripeToken}} -->
 	</span>
    </div>
 </form>

@@ -45,6 +45,10 @@ ul {
 	list-style-type: none;
 }
 
+.one-book li {
+	list-style-type: none;
+}
+
 .header-one {
 	font-size: 2em;
 	letter-spacing: 0.5em;
@@ -56,7 +60,7 @@ ul {
 	text-transform: uppercase;
 	position: fixed;
 	left: 90px;
-	top: 120px;
+	top: 160px;
 	z-index: 10000;
 }
 
@@ -163,6 +167,7 @@ li#category-books {
 
 .one-book {
 	margin-top: 4em;
+	margin-bottom: 2em;
 }
 
 /*.one-right {
@@ -453,7 +458,6 @@ a:hover {
 	border: 1px solid #EEEEEE;
 	padding: 5em;
 	margin-top: 155px;
-	height: 34em;
 }
 
 .signup-form {

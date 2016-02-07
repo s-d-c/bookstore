@@ -16,7 +16,7 @@
     <tr ng-model="length" ng-repeat="item in userItems">
     	<td class="user-books"><img ng-src="{{item.image}}"></td>
       <td class="user-books">{{item.title}}</td>
-      <td class="user-books">{{item.price | currency}}</td>
+      <td class="user-books">{{item.price | currency}} <a href="#" ng-click="removeItem(item)">remove</a></td>
     </tr>
   </tbody>
 </table>
