@@ -11,9 +11,14 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	});
 
 }])
-.controller('BrowseCtrl', ['$scope','Book', function($scope, Book) {
-	$scope.categories = ["fiction", "nature", "history", "computers", "economics", "art/design"];
-
+.controller('BrowseCtrl', ['$scope','Book', '$http', function($scope, Book, $http) {
+	$scope.categories = {"fiction"     : 'http://i.imgur.com/0NE2bkD.jpg?1', 
+												"nature"     : 'http://i.imgur.com/uvhL9fu.jpg?1',
+												"history"    : 'http://i.imgur.com/Li4bUjH.jpg?1',
+												"economics"  : 'http://i.imgur.com/9txSTzY.jpg'
+											};
+	
+	
 }])
 .controller('CategoryCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	$scope.bookList = [];
@@ -151,6 +156,14 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.userItems.forEach(function(item){
 		$scope.total += item.price;
 	})
+
+	$scope.removeItem = function(item) {
+		for(i = 0; i < Cart.bag.length; i++) {
+			if (Cart.bag[i] === item) {
+				Cart.bag.splice(i, 1);
+			}
+		}
+	}
 
 	console.log($scope.userItems);
 
