@@ -136,9 +136,10 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 }])
 
 .controller('SearchCtrl', ['$scope', '$route', 'Search', function($scope, $route, Search) {
+	
 	console.log($route.current.$$route.originalPath);
 	$scope.results = Search.results;
-	
+
 }])
 .controller('CartCtrl', ['$scope', '$route', 'Book', 'Cart', function($scope, $route, Book, Cart){
 	$scope.length = (Cart.bag.length);
