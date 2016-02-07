@@ -101,8 +101,11 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
   	$scope.cartCount = newItems.length;
 	});
 
-	$scope.search = function() {
+	$scope.back = function() {
+		$window.history.back();
+	}
 
+	$scope.search = function() {
 		var req = {
 			url: "http://localhost:3000/data/search/",
 			method: 'GET',
