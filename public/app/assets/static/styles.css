@@ -111,7 +111,7 @@ ul {
 
 .browse-categories {
 	margin-top: 250px;
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 }
 
 li#category-books {
@@ -134,7 +134,6 @@ li#category-books {
 #total-due {
 	width: 300px;
 	position: fixed;
-	top: 270px;
 	right: 100px;
 }
 
@@ -148,7 +147,7 @@ li#category-books {
 }
 
 .checkout-btn {
-	background-color: transparent;
+	background-color: #FFFFFF;
 	border: 1px solid #DDDDDD;
 	font-family: 'Raleway', sans-serif;
 	color: #666666;
@@ -156,7 +155,7 @@ li#category-books {
 }
 
 .checkout-btn:hover {
-	background-color: transparent;
+	background-color: #FFFFFF;
 	border: 1px solid #0eafa5;
 	font-family: 'Raleway', sans-serif;
 	color: #0eafa5;
@@ -291,6 +290,7 @@ img#one-book-cover {
 /* Browse Books by Category Goes Here */
 .categories {
 	margin-top: 100px;
+	margin-bottom: 30px;
 }
 
 /* Nav Bar Styles Goes Here 
@@ -455,9 +455,10 @@ a:hover {
 }
 
 .checkout-panel {
-	border: 1px solid #EEEEEE;
-	padding: 5em;
+/*	border: 1px solid #EEEEEE;*/
+	padding: 3em;
 	margin-top: 155px;
+	margin-bottom: 30px;
 }
 
 .signup-form {
@@ -472,7 +473,7 @@ button.login-button {
 	border: 1px solid #daf650;
 	background-color: transparent;
 	color: #000000;
-	font-size: 0.3em;
+/*	font-size: 0.3em;*/
 	font-weight: 700;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
@@ -513,6 +514,12 @@ label {
 	background-color: #FFFFFF;
 }
 */
+
+#gif {
+	margin-right: 20px;
+	display: inline;
+	float: left;
+}
 
 .about-us {
 	margin-top: 180px;
