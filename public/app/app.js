@@ -45,6 +45,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	.when('/success', {
 		templateUrl: 'app/views/success.html'
 	})
+	.when('/confirm', {
+		templateUrl: 'app/views/confirm.html'
+	})
 	.otherwise({
 		templateUrl: 'app/views/404.html'
 	});
