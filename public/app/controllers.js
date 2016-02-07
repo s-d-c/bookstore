@@ -24,7 +24,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.bookList = [];
 	
 	$http({
-		url: "http://localhost:3000/data/browse/" + $routeParams.category,
+		url: "https://walldeskfloor.herokuapp.com/data/browse/" + $routeParams.category,
 		method: 'GET'
 	}).then(function success(res) {
 		if (res.status === 200) {
@@ -107,7 +107,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 
 	$scope.search = function() {
 		var req = {
-			url: "http://localhost:3000/data/search/",
+			url: "https://walldeskfloor.herokuapp.com/data/search/",
 			method: 'GET',
 			params: {
 				s: $scope.searchTerm,
