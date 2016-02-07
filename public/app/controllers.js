@@ -208,7 +208,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 		});
 	}
 }])
-.controller('CheckoutCtrl', ['$scope', 'Book', 'Cart', function($scope, Book, Cart){
+.controller('CheckoutCtrl', ['$scope', '$location', 'Book', 'Cart', function($scope, $location, Book, Cart){
 
 	$scope.length = Cart.bag.length;
 	$scope.orderSummary = Cart.bag;
@@ -226,6 +226,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 				$scope.stripeError = result.error.message;
 			} else {
 				$scope.stripeToken = result.id;
+				console.log($scope.stripeToken);
 			}
 	};
 
@@ -233,6 +234,12 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 				$scope.stripeError = null;
 				$scope.stripeToken = null;
 			};
+
+	$scope.checkoutSubmit = function () {
+		$location.path('/confirm');
+		Cart.bag.length = 0;
+		console.log('click');
+	}
 }])
 
 
