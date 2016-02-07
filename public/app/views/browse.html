@@ -6,13 +6,13 @@
 </div>
 <div class="row align-center categories">
 	<ul class="large-block-grid-2">
-		<li ng-repeat="category in categories| orderBy: 'created_at'"><a 
+		<li ng-repeat="(key, value) in categories| orderBy: 'created_at'"><a 
 			class="caption" 
-			ng-href="/browse/{{category}}" 
-			data-title="{{category}}" 
-			data-description="See All {{category}} &rarr;">
+			ng-href="/browse/{{key}}" 
+			data-title="{{key}}" 
+			data-description="See All {{key}} &rarr;">
 
-			<img src="https://01.img.society6.com/society6/img/Ls-9TRkOo2RRzOr_ocZ2wzlG22k/w_550/artwork/~artwork/s6-0055/a/23184269_12215944/~~/palette-no-twenty-five-prints.jpg" style="border: 1px solid #DDDDDD;" alt="Book Cover">
+			<img src="{{value}}" style="border: 1px solid #DDDDDD;" alt="Book Cover">
 			
 		</a>
 		</li>

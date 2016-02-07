@@ -11,9 +11,14 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	});
 
 }])
-.controller('BrowseCtrl', ['$scope','Book', function($scope, Book) {
-	$scope.categories = ["fiction", "nature", "history", "computers", "economics", "art/design"];
-
+.controller('BrowseCtrl', ['$scope','Book', '$http', function($scope, Book, $http) {
+	$scope.categories = {"fiction"     : 'http://i.imgur.com/0NE2bkD.jpg?1', 
+												"nature"     : 'http://i.imgur.com/uvhL9fu.jpg?1',
+												"history"    : 'http://i.imgur.com/Li4bUjH.jpg?1',
+												"economics"  : 'http://i.imgur.com/9txSTzY.jpg'
+											};
+	
+	
 }])
 .controller('CategoryCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	$scope.bookList = [];
@@ -96,8 +101,11 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
   	$scope.cartCount = newItems.length;
 	});
 
-	$scope.search = function() {
+	$scope.back = function() {
+		$window.history.back();
+	}
 
+	$scope.search = function() {
 		var req = {
 			url: "http://localhost:3000/data/search/",
 			method: 'GET',
