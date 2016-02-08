@@ -24,7 +24,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.bookList = [];
 	$scope.category = $routeParams.category;
 	$http({
-		url: "http://walldeskfloor.herokuapp.com/data/browse/" + $routeParams.category,
+		url: "/data/browse/" + $routeParams.category,
 		method: 'GET'
 	}).then(function success(res) {
 		if (res.status === 200) {
