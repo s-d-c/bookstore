@@ -12,10 +12,10 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 
 }])
 .controller('BrowseCtrl', ['$scope','Book', '$http', function($scope, Book, $http) {
-	$scope.categories = {"fiction"     : 'http://i.imgur.com/0NE2bkD.jpg?1', 
-												"nature"     : 'http://i.imgur.com/uvhL9fu.jpg?1',
-												"history"    : 'http://i.imgur.com/Li4bUjH.jpg?1',
-												"economics"  : 'http://i.imgur.com/9txSTzY.jpg'
+	$scope.categories = {"fiction"     : 'https://i.imgur.com/0NE2bkD.jpg?1', 
+												"nature"     : 'https://i.imgur.com/uvhL9fu.jpg?1',
+												"history"    : 'https://i.imgur.com/Li4bUjH.jpg?1',
+												"economics"  : 'https://i.imgur.com/9txSTzY.jpg'
 											};
 	
 	
@@ -24,7 +24,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 	$scope.bookList = [];
 	$scope.category = $routeParams.category;
 	$http({
-		url: "http://localhost:3000/data/browse/" + $routeParams.category,
+		url: "https://walldeskfloor.herokuapp.com/data/browse/" + $routeParams.category,
 		method: 'GET'
 	}).then(function success(res) {
 		if (res.status === 200) {
@@ -107,7 +107,7 @@ angular.module('BookCtrls', ['BookServices', 'mm.foundation'])
 
 	$scope.search = function() {
 		var req = {
-			url: "http://localhost:3000/data/search/",
+			url: "https://walldeskfloor.herokuapp.com/data/search/",
 			method: 'GET',
 			params: {
 				s: $scope.searchTerm,
